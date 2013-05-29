@@ -1,0 +1,574 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA2082EC170EC5C6004521D7 /* CompatibleFieldSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2082EB170EC5C6004521D7 /* CompatibleFieldSerializer.m */; };
+		AA2082EF170ECC52004521D7 /* Field.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2082EE170ECC52004521D7 /* Field.m */; };
+		AA2082F2170ECD5D004521D7 /* ObjectMap.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2082F1170ECD5D004521D7 /* ObjectMap.m */; };
+		AA2082F5170EE093004521D7 /* KryoInputChunked.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2082F4170EE093004521D7 /* KryoInputChunked.m */; };
+		AA2082F8170EE0A1004521D7 /* KryoOutputChunked.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2082F7170EE0A1004521D7 /* KryoOutputChunked.m */; };
+		AAC7B98E17147A9B0045EF72 /* MapSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC7B98D17147A9B0045EF72 /* MapSerializer.m */; };
+		AAE2A062170F229C00A09229 /* KryoException.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE2A061170F229C00A09229 /* KryoException.m */; };
+		D308C61416E7969100FEBEE9 /* JCharacterSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D308C61316E7969100FEBEE9 /* JCharacterSerializer.m */; };
+		D390964E16E79A8A0012B221 /* JBoolean.m in Sources */ = {isa = PBXBuildFile; fileRef = D390963316E79A8A0012B221 /* JBoolean.m */; };
+		D390964F16E79A8A0012B221 /* JByte.m in Sources */ = {isa = PBXBuildFile; fileRef = D390963516E79A8A0012B221 /* JByte.m */; };
+		D390965016E79A8A0012B221 /* JCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = D390963716E79A8A0012B221 /* JCharacter.m */; };
+		D390965116E79A8A0012B221 /* JDouble.m in Sources */ = {isa = PBXBuildFile; fileRef = D390963916E79A8A0012B221 /* JDouble.m */; };
+		D390965216E79A8A0012B221 /* JDoubleArray.m in Sources */ = {isa = PBXBuildFile; fileRef = D390963B16E79A8A0012B221 /* JDoubleArray.m */; };
+		D390965316E79A8A0012B221 /* JFloat.m in Sources */ = {isa = PBXBuildFile; fileRef = D390963D16E79A8A0012B221 /* JFloat.m */; };
+		D390965416E79A8A0012B221 /* JFloatArray.m in Sources */ = {isa = PBXBuildFile; fileRef = D390963F16E79A8A0012B221 /* JFloatArray.m */; };
+		D390965516E79A8A0012B221 /* JInteger.m in Sources */ = {isa = PBXBuildFile; fileRef = D390964116E79A8A0012B221 /* JInteger.m */; };
+		D390965616E79A8A0012B221 /* JIntegerArray.m in Sources */ = {isa = PBXBuildFile; fileRef = D390964316E79A8A0012B221 /* JIntegerArray.m */; };
+		D390965716E79A8A0012B221 /* JLong.m in Sources */ = {isa = PBXBuildFile; fileRef = D390964516E79A8A0012B221 /* JLong.m */; };
+		D390965816E79A8A0012B221 /* JLongArray.m in Sources */ = {isa = PBXBuildFile; fileRef = D390964716E79A8A0012B221 /* JLongArray.m */; };
+		D390965916E79A8A0012B221 /* JObjectArray.m in Sources */ = {isa = PBXBuildFile; fileRef = D390964916E79A8A0012B221 /* JObjectArray.m */; };
+		D390965A16E79A8A0012B221 /* JShort.m in Sources */ = {isa = PBXBuildFile; fileRef = D390964B16E79A8A0012B221 /* JShort.m */; };
+		D390965B16E79A8A0012B221 /* JShortArray.m in Sources */ = {isa = PBXBuildFile; fileRef = D390964D16E79A8A0012B221 /* JShortArray.m */; };
+		D390965F16E79D370012B221 /* JBooleanArray.m in Sources */ = {isa = PBXBuildFile; fileRef = D390965E16E79D360012B221 /* JBooleanArray.m */; };
+		D390966216E79D460012B221 /* JCharacterArray.m in Sources */ = {isa = PBXBuildFile; fileRef = D390966116E79D450012B221 /* JCharacterArray.m */; };
+		D390966516E79E360012B221 /* JCharacterArraySerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D390966416E79E350012B221 /* JCharacterArraySerializer.m */; };
+		D390966816E79E450012B221 /* JBooleanArraySerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D390966716E79E450012B221 /* JBooleanArraySerializer.m */; };
+		D39ED1C016E8A98F001AA271 /* JNumeric.m in Sources */ = {isa = PBXBuildFile; fileRef = D39ED1BF16E8A98F001AA271 /* JNumeric.m */; };
+		D3EDD19316E65FD8005339C3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3EDD19216E65FD8005339C3 /* Foundation.framework */; };
+		D3EDD19816E65FD8005339C3 /* Kryo.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EDD19716E65FD8005339C3 /* Kryo.h */; };
+		D3EDD19A16E65FD8005339C3 /* Kryo.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EDD19916E65FD8005339C3 /* Kryo.m */; };
+		D3EDD1B216E6604B005339C3 /* DefaultClassResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EDD1A516E6604B005339C3 /* DefaultClassResolver.m */; };
+		D3EDD1B316E6604B005339C3 /* KryoInput.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EDD1A716E6604B005339C3 /* KryoInput.m */; };
+		D3EDD1B416E6604B005339C3 /* KryoOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EDD1A916E6604B005339C3 /* KryoOutput.m */; };
+		D3EDD1B516E6604B005339C3 /* ListReferenceResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EDD1AB16E6604B005339C3 /* ListReferenceResolver.m */; };
+		D3EDD1B716E6604B005339C3 /* Registration.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EDD1B016E6604B005339C3 /* Registration.m */; };
+		D3EDD20316E66062005339C3 /* ArraySerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EDD1E016E66062005339C3 /* ArraySerializer.m */; };
+		D3EDD20416E66062005339C3 /* DataSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EDD1E216E66062005339C3 /* DataSerializer.m */; };
+		D3EDD20516E66062005339C3 /* DateSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EDD1E416E66062005339C3 /* DateSerializer.m */; };
+		D3EDD20616E66062005339C3 /* FieldSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EDD1E616E66062005339C3 /* FieldSerializer.m */; };
+		D3EDD20716E66062005339C3 /* JBooleanSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EDD1E816E66062005339C3 /* JBooleanSerializer.m */; };
+		D3EDD20816E66062005339C3 /* JByteSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EDD1EA16E66062005339C3 /* JByteSerializer.m */; };
+		D3EDD20916E66062005339C3 /* JDoubleArraySerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EDD1EC16E66062005339C3 /* JDoubleArraySerializer.m */; };
+		D3EDD20A16E66062005339C3 /* JDoubleSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EDD1EE16E66062005339C3 /* JDoubleSerializer.m */; };
+		D3EDD20B16E66062005339C3 /* JFloatArraySerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EDD1F016E66062005339C3 /* JFloatArraySerializer.m */; };
+		D3EDD20C16E66062005339C3 /* JFloatSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EDD1F216E66062005339C3 /* JFloatSerializer.m */; };
+		D3EDD20D16E66062005339C3 /* JIntegerArraySerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EDD1F416E66062005339C3 /* JIntegerArraySerializer.m */; };
+		D3EDD20E16E66062005339C3 /* JIntegerSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EDD1F616E66062005339C3 /* JIntegerSerializer.m */; };
+		D3EDD20F16E66062005339C3 /* JLongArraySerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EDD1F816E66062005339C3 /* JLongArraySerializer.m */; };
+		D3EDD21016E66062005339C3 /* JLongSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EDD1FA16E66062005339C3 /* JLongSerializer.m */; };
+		D3EDD21116E66062005339C3 /* JObjectArraySerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EDD1FC16E66062005339C3 /* JObjectArraySerializer.m */; };
+		D3EDD21216E66062005339C3 /* JShortArraySerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EDD1FE16E66062005339C3 /* JShortArraySerializer.m */; };
+		D3EDD21316E66062005339C3 /* JShortSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EDD20016E66062005339C3 /* JShortSerializer.m */; };
+		D3EDD21416E66062005339C3 /* StringSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D3EDD20216E66062005339C3 /* StringSerializer.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D3EDD18D16E65FD8005339C3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+				D3EDD19816E65FD8005339C3 /* Kryo.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AA2082EA170EC5C6004521D7 /* CompatibleFieldSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CompatibleFieldSerializer.h; path = Serializer/CompatibleFieldSerializer.h; sourceTree = "<group>"; };
+		AA2082EB170EC5C6004521D7 /* CompatibleFieldSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CompatibleFieldSerializer.m; path = Serializer/CompatibleFieldSerializer.m; sourceTree = "<group>"; };
+		AA2082ED170ECBEE004521D7 /* Field.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Field.h; path = Serializer/Field.h; sourceTree = "<group>"; };
+		AA2082EE170ECC52004521D7 /* Field.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Field.m; path = Serializer/Field.m; sourceTree = "<group>"; };
+		AA2082F0170ECD5D004521D7 /* ObjectMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectMap.h; sourceTree = "<group>"; };
+		AA2082F1170ECD5D004521D7 /* ObjectMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectMap.m; sourceTree = "<group>"; };
+		AA2082F3170EE093004521D7 /* KryoInputChunked.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KryoInputChunked.h; sourceTree = "<group>"; };
+		AA2082F4170EE093004521D7 /* KryoInputChunked.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KryoInputChunked.m; sourceTree = "<group>"; };
+		AA2082F6170EE0A1004521D7 /* KryoOutputChunked.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KryoOutputChunked.h; sourceTree = "<group>"; };
+		AA2082F7170EE0A1004521D7 /* KryoOutputChunked.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KryoOutputChunked.m; sourceTree = "<group>"; };
+		AAC7B98C17147A9B0045EF72 /* MapSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapSerializer.h; path = Serializer/MapSerializer.h; sourceTree = "<group>"; };
+		AAC7B98D17147A9B0045EF72 /* MapSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapSerializer.m; path = Serializer/MapSerializer.m; sourceTree = "<group>"; };
+		AAE2A060170F229C00A09229 /* KryoException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KryoException.h; sourceTree = "<group>"; };
+		AAE2A061170F229C00A09229 /* KryoException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KryoException.m; sourceTree = "<group>"; };
+		D308C60E16E76C4700FEBEE9 /* SerializationAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SerializationAnnotation.h; sourceTree = "<group>"; };
+		D308C61216E7969100FEBEE9 /* JCharacterSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JCharacterSerializer.h; path = Serializer/JCharacterSerializer.h; sourceTree = "<group>"; };
+		D308C61316E7969100FEBEE9 /* JCharacterSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JCharacterSerializer.m; path = Serializer/JCharacterSerializer.m; sourceTree = "<group>"; };
+		D390963216E79A8A0012B221 /* JBoolean.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBoolean.h; sourceTree = "<group>"; };
+		D390963316E79A8A0012B221 /* JBoolean.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBoolean.m; sourceTree = "<group>"; };
+		D390963416E79A8A0012B221 /* JByte.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JByte.h; sourceTree = "<group>"; };
+		D390963516E79A8A0012B221 /* JByte.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JByte.m; sourceTree = "<group>"; };
+		D390963616E79A8A0012B221 /* JCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCharacter.h; sourceTree = "<group>"; };
+		D390963716E79A8A0012B221 /* JCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCharacter.m; sourceTree = "<group>"; };
+		D390963816E79A8A0012B221 /* JDouble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDouble.h; sourceTree = "<group>"; };
+		D390963916E79A8A0012B221 /* JDouble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDouble.m; sourceTree = "<group>"; };
+		D390963A16E79A8A0012B221 /* JDoubleArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDoubleArray.h; sourceTree = "<group>"; };
+		D390963B16E79A8A0012B221 /* JDoubleArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDoubleArray.m; sourceTree = "<group>"; };
+		D390963C16E79A8A0012B221 /* JFloat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFloat.h; sourceTree = "<group>"; };
+		D390963D16E79A8A0012B221 /* JFloat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFloat.m; sourceTree = "<group>"; };
+		D390963E16E79A8A0012B221 /* JFloatArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFloatArray.h; sourceTree = "<group>"; };
+		D390963F16E79A8A0012B221 /* JFloatArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFloatArray.m; sourceTree = "<group>"; };
+		D390964016E79A8A0012B221 /* JInteger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JInteger.h; sourceTree = "<group>"; };
+		D390964116E79A8A0012B221 /* JInteger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JInteger.m; sourceTree = "<group>"; };
+		D390964216E79A8A0012B221 /* JIntegerArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JIntegerArray.h; sourceTree = "<group>"; };
+		D390964316E79A8A0012B221 /* JIntegerArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JIntegerArray.m; sourceTree = "<group>"; };
+		D390964416E79A8A0012B221 /* JLong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLong.h; sourceTree = "<group>"; };
+		D390964516E79A8A0012B221 /* JLong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLong.m; sourceTree = "<group>"; };
+		D390964616E79A8A0012B221 /* JLongArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JLongArray.h; sourceTree = "<group>"; };
+		D390964716E79A8A0012B221 /* JLongArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JLongArray.m; sourceTree = "<group>"; };
+		D390964816E79A8A0012B221 /* JObjectArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JObjectArray.h; sourceTree = "<group>"; };
+		D390964916E79A8A0012B221 /* JObjectArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JObjectArray.m; sourceTree = "<group>"; };
+		D390964A16E79A8A0012B221 /* JShort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JShort.h; sourceTree = "<group>"; };
+		D390964B16E79A8A0012B221 /* JShort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JShort.m; sourceTree = "<group>"; };
+		D390964C16E79A8A0012B221 /* JShortArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JShortArray.h; sourceTree = "<group>"; };
+		D390964D16E79A8A0012B221 /* JShortArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JShortArray.m; sourceTree = "<group>"; };
+		D390965D16E79D350012B221 /* JBooleanArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JBooleanArray.h; sourceTree = "<group>"; };
+		D390965E16E79D360012B221 /* JBooleanArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JBooleanArray.m; sourceTree = "<group>"; };
+		D390966016E79D440012B221 /* JCharacterArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCharacterArray.h; sourceTree = "<group>"; };
+		D390966116E79D450012B221 /* JCharacterArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCharacterArray.m; sourceTree = "<group>"; };
+		D390966316E79E350012B221 /* JCharacterArraySerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JCharacterArraySerializer.h; path = Serializer/JCharacterArraySerializer.h; sourceTree = "<group>"; };
+		D390966416E79E350012B221 /* JCharacterArraySerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JCharacterArraySerializer.m; path = Serializer/JCharacterArraySerializer.m; sourceTree = "<group>"; };
+		D390966616E79E440012B221 /* JBooleanArraySerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBooleanArraySerializer.h; path = Serializer/JBooleanArraySerializer.h; sourceTree = "<group>"; };
+		D390966716E79E450012B221 /* JBooleanArraySerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBooleanArraySerializer.m; path = Serializer/JBooleanArraySerializer.m; sourceTree = "<group>"; };
+		D39ED1BE16E8A98F001AA271 /* JNumeric.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JNumeric.h; sourceTree = "<group>"; };
+		D39ED1BF16E8A98F001AA271 /* JNumeric.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JNumeric.m; sourceTree = "<group>"; };
+		D3EDD18F16E65FD8005339C3 /* libKryo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libKryo.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3EDD19216E65FD8005339C3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D3EDD19616E65FD8005339C3 /* Kryo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Kryo-Prefix.pch"; sourceTree = "<group>"; };
+		D3EDD19716E65FD8005339C3 /* Kryo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Kryo.h; sourceTree = "<group>"; };
+		D3EDD19916E65FD8005339C3 /* Kryo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Kryo.m; sourceTree = "<group>"; };
+		D3EDD1A316E6604B005339C3 /* ClassResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassResolver.h; sourceTree = "<group>"; };
+		D3EDD1A416E6604B005339C3 /* DefaultClassResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultClassResolver.h; sourceTree = "<group>"; };
+		D3EDD1A516E6604B005339C3 /* DefaultClassResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultClassResolver.m; sourceTree = "<group>"; };
+		D3EDD1A616E6604B005339C3 /* KryoInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KryoInput.h; sourceTree = "<group>"; };
+		D3EDD1A716E6604B005339C3 /* KryoInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KryoInput.m; sourceTree = "<group>"; };
+		D3EDD1A816E6604B005339C3 /* KryoOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KryoOutput.h; sourceTree = "<group>"; };
+		D3EDD1A916E6604B005339C3 /* KryoOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KryoOutput.m; sourceTree = "<group>"; };
+		D3EDD1AA16E6604B005339C3 /* ListReferenceResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListReferenceResolver.h; sourceTree = "<group>"; };
+		D3EDD1AB16E6604B005339C3 /* ListReferenceResolver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListReferenceResolver.m; sourceTree = "<group>"; };
+		D3EDD1AE16E6604B005339C3 /* ReferenceResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReferenceResolver.h; sourceTree = "<group>"; };
+		D3EDD1AF16E6604B005339C3 /* Registration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Registration.h; sourceTree = "<group>"; };
+		D3EDD1B016E6604B005339C3 /* Registration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Registration.m; sourceTree = "<group>"; };
+		D3EDD1B116E6604B005339C3 /* Serializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Serializer.h; sourceTree = "<group>"; };
+		D3EDD1DF16E66062005339C3 /* ArraySerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArraySerializer.h; path = Serializer/ArraySerializer.h; sourceTree = "<group>"; };
+		D3EDD1E016E66062005339C3 /* ArraySerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArraySerializer.m; path = Serializer/ArraySerializer.m; sourceTree = "<group>"; };
+		D3EDD1E116E66062005339C3 /* DataSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataSerializer.h; path = Serializer/DataSerializer.h; sourceTree = "<group>"; };
+		D3EDD1E216E66062005339C3 /* DataSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataSerializer.m; path = Serializer/DataSerializer.m; sourceTree = "<group>"; };
+		D3EDD1E316E66062005339C3 /* DateSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DateSerializer.h; path = Serializer/DateSerializer.h; sourceTree = "<group>"; };
+		D3EDD1E416E66062005339C3 /* DateSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DateSerializer.m; path = Serializer/DateSerializer.m; sourceTree = "<group>"; };
+		D3EDD1E516E66062005339C3 /* FieldSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FieldSerializer.h; path = Serializer/FieldSerializer.h; sourceTree = "<group>"; };
+		D3EDD1E616E66062005339C3 /* FieldSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FieldSerializer.m; path = Serializer/FieldSerializer.m; sourceTree = "<group>"; };
+		D3EDD1E716E66062005339C3 /* JBooleanSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JBooleanSerializer.h; path = Serializer/JBooleanSerializer.h; sourceTree = "<group>"; };
+		D3EDD1E816E66062005339C3 /* JBooleanSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JBooleanSerializer.m; path = Serializer/JBooleanSerializer.m; sourceTree = "<group>"; };
+		D3EDD1E916E66062005339C3 /* JByteSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JByteSerializer.h; path = Serializer/JByteSerializer.h; sourceTree = "<group>"; };
+		D3EDD1EA16E66062005339C3 /* JByteSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JByteSerializer.m; path = Serializer/JByteSerializer.m; sourceTree = "<group>"; };
+		D3EDD1EB16E66062005339C3 /* JDoubleArraySerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JDoubleArraySerializer.h; path = Serializer/JDoubleArraySerializer.h; sourceTree = "<group>"; };
+		D3EDD1EC16E66062005339C3 /* JDoubleArraySerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JDoubleArraySerializer.m; path = Serializer/JDoubleArraySerializer.m; sourceTree = "<group>"; };
+		D3EDD1ED16E66062005339C3 /* JDoubleSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JDoubleSerializer.h; path = Serializer/JDoubleSerializer.h; sourceTree = "<group>"; };
+		D3EDD1EE16E66062005339C3 /* JDoubleSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JDoubleSerializer.m; path = Serializer/JDoubleSerializer.m; sourceTree = "<group>"; };
+		D3EDD1EF16E66062005339C3 /* JFloatArraySerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JFloatArraySerializer.h; path = Serializer/JFloatArraySerializer.h; sourceTree = "<group>"; };
+		D3EDD1F016E66062005339C3 /* JFloatArraySerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JFloatArraySerializer.m; path = Serializer/JFloatArraySerializer.m; sourceTree = "<group>"; };
+		D3EDD1F116E66062005339C3 /* JFloatSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JFloatSerializer.h; path = Serializer/JFloatSerializer.h; sourceTree = "<group>"; };
+		D3EDD1F216E66062005339C3 /* JFloatSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JFloatSerializer.m; path = Serializer/JFloatSerializer.m; sourceTree = "<group>"; };
+		D3EDD1F316E66062005339C3 /* JIntegerArraySerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JIntegerArraySerializer.h; path = Serializer/JIntegerArraySerializer.h; sourceTree = "<group>"; };
+		D3EDD1F416E66062005339C3 /* JIntegerArraySerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JIntegerArraySerializer.m; path = Serializer/JIntegerArraySerializer.m; sourceTree = "<group>"; };
+		D3EDD1F516E66062005339C3 /* JIntegerSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JIntegerSerializer.h; path = Serializer/JIntegerSerializer.h; sourceTree = "<group>"; };
+		D3EDD1F616E66062005339C3 /* JIntegerSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JIntegerSerializer.m; path = Serializer/JIntegerSerializer.m; sourceTree = "<group>"; };
+		D3EDD1F716E66062005339C3 /* JLongArraySerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JLongArraySerializer.h; path = Serializer/JLongArraySerializer.h; sourceTree = "<group>"; };
+		D3EDD1F816E66062005339C3 /* JLongArraySerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JLongArraySerializer.m; path = Serializer/JLongArraySerializer.m; sourceTree = "<group>"; };
+		D3EDD1F916E66062005339C3 /* JLongSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JLongSerializer.h; path = Serializer/JLongSerializer.h; sourceTree = "<group>"; };
+		D3EDD1FA16E66062005339C3 /* JLongSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JLongSerializer.m; path = Serializer/JLongSerializer.m; sourceTree = "<group>"; };
+		D3EDD1FB16E66062005339C3 /* JObjectArraySerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JObjectArraySerializer.h; path = Serializer/JObjectArraySerializer.h; sourceTree = "<group>"; };
+		D3EDD1FC16E66062005339C3 /* JObjectArraySerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JObjectArraySerializer.m; path = Serializer/JObjectArraySerializer.m; sourceTree = "<group>"; };
+		D3EDD1FD16E66062005339C3 /* JShortArraySerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JShortArraySerializer.h; path = Serializer/JShortArraySerializer.h; sourceTree = "<group>"; };
+		D3EDD1FE16E66062005339C3 /* JShortArraySerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JShortArraySerializer.m; path = Serializer/JShortArraySerializer.m; sourceTree = "<group>"; };
+		D3EDD1FF16E66062005339C3 /* JShortSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JShortSerializer.h; path = Serializer/JShortSerializer.h; sourceTree = "<group>"; };
+		D3EDD20016E66062005339C3 /* JShortSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JShortSerializer.m; path = Serializer/JShortSerializer.m; sourceTree = "<group>"; };
+		D3EDD20116E66062005339C3 /* StringSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringSerializer.h; path = Serializer/StringSerializer.h; sourceTree = "<group>"; };
+		D3EDD20216E66062005339C3 /* StringSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StringSerializer.m; path = Serializer/StringSerializer.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D3EDD18C16E65FD8005339C3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3EDD19316E65FD8005339C3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA05DE991756253900428DD7 /* Java Types */ = {
+			isa = PBXGroup;
+			children = (
+				D390963216E79A8A0012B221 /* JBoolean.h */,
+				D390963316E79A8A0012B221 /* JBoolean.m */,
+				D390965D16E79D350012B221 /* JBooleanArray.h */,
+				D390965E16E79D360012B221 /* JBooleanArray.m */,
+				D390963416E79A8A0012B221 /* JByte.h */,
+				D390963516E79A8A0012B221 /* JByte.m */,
+				D390963616E79A8A0012B221 /* JCharacter.h */,
+				D390963716E79A8A0012B221 /* JCharacter.m */,
+				D390966016E79D440012B221 /* JCharacterArray.h */,
+				D390966116E79D450012B221 /* JCharacterArray.m */,
+				D390963816E79A8A0012B221 /* JDouble.h */,
+				D390963916E79A8A0012B221 /* JDouble.m */,
+				D390963A16E79A8A0012B221 /* JDoubleArray.h */,
+				D390963B16E79A8A0012B221 /* JDoubleArray.m */,
+				D390963C16E79A8A0012B221 /* JFloat.h */,
+				D390963D16E79A8A0012B221 /* JFloat.m */,
+				D390963E16E79A8A0012B221 /* JFloatArray.h */,
+				D390963F16E79A8A0012B221 /* JFloatArray.m */,
+				D390964016E79A8A0012B221 /* JInteger.h */,
+				D390964116E79A8A0012B221 /* JInteger.m */,
+				D390964216E79A8A0012B221 /* JIntegerArray.h */,
+				D390964316E79A8A0012B221 /* JIntegerArray.m */,
+				D390964416E79A8A0012B221 /* JLong.h */,
+				D390964516E79A8A0012B221 /* JLong.m */,
+				D390964616E79A8A0012B221 /* JLongArray.h */,
+				D390964716E79A8A0012B221 /* JLongArray.m */,
+				D39ED1BE16E8A98F001AA271 /* JNumeric.h */,
+				D39ED1BF16E8A98F001AA271 /* JNumeric.m */,
+				D390964816E79A8A0012B221 /* JObjectArray.h */,
+				D390964916E79A8A0012B221 /* JObjectArray.m */,
+				D390964A16E79A8A0012B221 /* JShort.h */,
+				D390964B16E79A8A0012B221 /* JShort.m */,
+				D390964C16E79A8A0012B221 /* JShortArray.h */,
+				D390964D16E79A8A0012B221 /* JShortArray.m */,
+			);
+			name = "Java Types";
+			sourceTree = "<group>";
+		};
+		D3EDD18616E65FD8005339C3 = {
+			isa = PBXGroup;
+			children = (
+				D3EDD19416E65FD8005339C3 /* Kryo */,
+				D3EDD19116E65FD8005339C3 /* Frameworks */,
+				D3EDD19016E65FD8005339C3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D3EDD19016E65FD8005339C3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D3EDD18F16E65FD8005339C3 /* libKryo.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D3EDD19116E65FD8005339C3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D3EDD19216E65FD8005339C3 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D3EDD19416E65FD8005339C3 /* Kryo */ = {
+			isa = PBXGroup;
+			children = (
+				D3EDD1A316E6604B005339C3 /* ClassResolver.h */,
+				D3EDD1A416E6604B005339C3 /* DefaultClassResolver.h */,
+				D3EDD1A516E6604B005339C3 /* DefaultClassResolver.m */,
+				AA05DE991756253900428DD7 /* Java Types */,
+				D3EDD19716E65FD8005339C3 /* Kryo.h */,
+				D3EDD19916E65FD8005339C3 /* Kryo.m */,
+				AAE2A060170F229C00A09229 /* KryoException.h */,
+				AAE2A061170F229C00A09229 /* KryoException.m */,
+				D3EDD1A616E6604B005339C3 /* KryoInput.h */,
+				D3EDD1A716E6604B005339C3 /* KryoInput.m */,
+				AA2082F3170EE093004521D7 /* KryoInputChunked.h */,
+				AA2082F4170EE093004521D7 /* KryoInputChunked.m */,
+				D3EDD1A816E6604B005339C3 /* KryoOutput.h */,
+				D3EDD1A916E6604B005339C3 /* KryoOutput.m */,
+				AA2082F6170EE0A1004521D7 /* KryoOutputChunked.h */,
+				AA2082F7170EE0A1004521D7 /* KryoOutputChunked.m */,
+				D3EDD1AA16E6604B005339C3 /* ListReferenceResolver.h */,
+				D3EDD1AB16E6604B005339C3 /* ListReferenceResolver.m */,
+				AA2082F0170ECD5D004521D7 /* ObjectMap.h */,
+				AA2082F1170ECD5D004521D7 /* ObjectMap.m */,
+				D3EDD1AE16E6604B005339C3 /* ReferenceResolver.h */,
+				D3EDD1AF16E6604B005339C3 /* Registration.h */,
+				D3EDD1B016E6604B005339C3 /* Registration.m */,
+				D308C60E16E76C4700FEBEE9 /* SerializationAnnotation.h */,
+				D3EDD1A016E66033005339C3 /* Serializer */,
+				D3EDD1B116E6604B005339C3 /* Serializer.h */,
+				D3EDD19516E65FD8005339C3 /* Supporting Files */,
+			);
+			path = Kryo;
+			sourceTree = "<group>";
+		};
+		D3EDD19516E65FD8005339C3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D3EDD19616E65FD8005339C3 /* Kryo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D3EDD1A016E66033005339C3 /* Serializer */ = {
+			isa = PBXGroup;
+			children = (
+				D3EDD1DF16E66062005339C3 /* ArraySerializer.h */,
+				D3EDD1E016E66062005339C3 /* ArraySerializer.m */,
+				AA2082EA170EC5C6004521D7 /* CompatibleFieldSerializer.h */,
+				AA2082EB170EC5C6004521D7 /* CompatibleFieldSerializer.m */,
+				D3EDD1E116E66062005339C3 /* DataSerializer.h */,
+				D3EDD1E216E66062005339C3 /* DataSerializer.m */,
+				D3EDD1E316E66062005339C3 /* DateSerializer.h */,
+				D3EDD1E416E66062005339C3 /* DateSerializer.m */,
+				AA2082ED170ECBEE004521D7 /* Field.h */,
+				AA2082EE170ECC52004521D7 /* Field.m */,
+				D3EDD1E516E66062005339C3 /* FieldSerializer.h */,
+				D3EDD1E616E66062005339C3 /* FieldSerializer.m */,
+				D390966616E79E440012B221 /* JBooleanArraySerializer.h */,
+				D390966716E79E450012B221 /* JBooleanArraySerializer.m */,
+				D3EDD1E716E66062005339C3 /* JBooleanSerializer.h */,
+				D3EDD1E816E66062005339C3 /* JBooleanSerializer.m */,
+				D3EDD1E916E66062005339C3 /* JByteSerializer.h */,
+				D3EDD1EA16E66062005339C3 /* JByteSerializer.m */,
+				D390966316E79E350012B221 /* JCharacterArraySerializer.h */,
+				D390966416E79E350012B221 /* JCharacterArraySerializer.m */,
+				D308C61216E7969100FEBEE9 /* JCharacterSerializer.h */,
+				D308C61316E7969100FEBEE9 /* JCharacterSerializer.m */,
+				D3EDD1EB16E66062005339C3 /* JDoubleArraySerializer.h */,
+				D3EDD1EC16E66062005339C3 /* JDoubleArraySerializer.m */,
+				D3EDD1ED16E66062005339C3 /* JDoubleSerializer.h */,
+				D3EDD1EE16E66062005339C3 /* JDoubleSerializer.m */,
+				D3EDD1EF16E66062005339C3 /* JFloatArraySerializer.h */,
+				D3EDD1F016E66062005339C3 /* JFloatArraySerializer.m */,
+				D3EDD1F116E66062005339C3 /* JFloatSerializer.h */,
+				D3EDD1F216E66062005339C3 /* JFloatSerializer.m */,
+				D3EDD1F316E66062005339C3 /* JIntegerArraySerializer.h */,
+				D3EDD1F416E66062005339C3 /* JIntegerArraySerializer.m */,
+				D3EDD1F516E66062005339C3 /* JIntegerSerializer.h */,
+				D3EDD1F616E66062005339C3 /* JIntegerSerializer.m */,
+				D3EDD1F716E66062005339C3 /* JLongArraySerializer.h */,
+				D3EDD1F816E66062005339C3 /* JLongArraySerializer.m */,
+				D3EDD1F916E66062005339C3 /* JLongSerializer.h */,
+				D3EDD1FA16E66062005339C3 /* JLongSerializer.m */,
+				D3EDD1FB16E66062005339C3 /* JObjectArraySerializer.h */,
+				D3EDD1FC16E66062005339C3 /* JObjectArraySerializer.m */,
+				D3EDD1FD16E66062005339C3 /* JShortArraySerializer.h */,
+				D3EDD1FE16E66062005339C3 /* JShortArraySerializer.m */,
+				D3EDD1FF16E66062005339C3 /* JShortSerializer.h */,
+				D3EDD20016E66062005339C3 /* JShortSerializer.m */,
+				AAC7B98C17147A9B0045EF72 /* MapSerializer.h */,
+				AAC7B98D17147A9B0045EF72 /* MapSerializer.m */,
+				D3EDD20116E66062005339C3 /* StringSerializer.h */,
+				D3EDD20216E66062005339C3 /* StringSerializer.m */,
+			);
+			name = Serializer;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D3EDD18E16E65FD8005339C3 /* Kryo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3EDD19D16E65FD8005339C3 /* Build configuration list for PBXNativeTarget "Kryo" */;
+			buildPhases = (
+				D3EDD18B16E65FD8005339C3 /* Sources */,
+				D3EDD18C16E65FD8005339C3 /* Frameworks */,
+				D3EDD18D16E65FD8005339C3 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Kryo;
+			productName = Kryo;
+			productReference = D3EDD18F16E65FD8005339C3 /* libKryo.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D3EDD18716E65FD8005339C3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Boxx IT Solutions e.K.";
+			};
+			buildConfigurationList = D3EDD18A16E65FD8005339C3 /* Build configuration list for PBXProject "Kryo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D3EDD18616E65FD8005339C3;
+			productRefGroup = D3EDD19016E65FD8005339C3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D3EDD18E16E65FD8005339C3 /* Kryo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D3EDD18B16E65FD8005339C3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3EDD19A16E65FD8005339C3 /* Kryo.m in Sources */,
+				D3EDD1B216E6604B005339C3 /* DefaultClassResolver.m in Sources */,
+				D3EDD1B316E6604B005339C3 /* KryoInput.m in Sources */,
+				D3EDD1B416E6604B005339C3 /* KryoOutput.m in Sources */,
+				D3EDD1B516E6604B005339C3 /* ListReferenceResolver.m in Sources */,
+				D3EDD1B716E6604B005339C3 /* Registration.m in Sources */,
+				D3EDD20316E66062005339C3 /* ArraySerializer.m in Sources */,
+				D3EDD20416E66062005339C3 /* DataSerializer.m in Sources */,
+				D3EDD20516E66062005339C3 /* DateSerializer.m in Sources */,
+				D3EDD20616E66062005339C3 /* FieldSerializer.m in Sources */,
+				D3EDD20716E66062005339C3 /* JBooleanSerializer.m in Sources */,
+				D3EDD20816E66062005339C3 /* JByteSerializer.m in Sources */,
+				D3EDD20916E66062005339C3 /* JDoubleArraySerializer.m in Sources */,
+				D3EDD20A16E66062005339C3 /* JDoubleSerializer.m in Sources */,
+				D3EDD20B16E66062005339C3 /* JFloatArraySerializer.m in Sources */,
+				D3EDD20C16E66062005339C3 /* JFloatSerializer.m in Sources */,
+				D3EDD20D16E66062005339C3 /* JIntegerArraySerializer.m in Sources */,
+				D3EDD20E16E66062005339C3 /* JIntegerSerializer.m in Sources */,
+				D3EDD20F16E66062005339C3 /* JLongArraySerializer.m in Sources */,
+				D3EDD21016E66062005339C3 /* JLongSerializer.m in Sources */,
+				D3EDD21116E66062005339C3 /* JObjectArraySerializer.m in Sources */,
+				D3EDD21216E66062005339C3 /* JShortArraySerializer.m in Sources */,
+				D3EDD21316E66062005339C3 /* JShortSerializer.m in Sources */,
+				D3EDD21416E66062005339C3 /* StringSerializer.m in Sources */,
+				D308C61416E7969100FEBEE9 /* JCharacterSerializer.m in Sources */,
+				D390964E16E79A8A0012B221 /* JBoolean.m in Sources */,
+				D390964F16E79A8A0012B221 /* JByte.m in Sources */,
+				D390965016E79A8A0012B221 /* JCharacter.m in Sources */,
+				D390965116E79A8A0012B221 /* JDouble.m in Sources */,
+				D390965216E79A8A0012B221 /* JDoubleArray.m in Sources */,
+				D390965316E79A8A0012B221 /* JFloat.m in Sources */,
+				D390965416E79A8A0012B221 /* JFloatArray.m in Sources */,
+				D390965516E79A8A0012B221 /* JInteger.m in Sources */,
+				D390965616E79A8A0012B221 /* JIntegerArray.m in Sources */,
+				D390965716E79A8A0012B221 /* JLong.m in Sources */,
+				D390965816E79A8A0012B221 /* JLongArray.m in Sources */,
+				D390965916E79A8A0012B221 /* JObjectArray.m in Sources */,
+				D390965A16E79A8A0012B221 /* JShort.m in Sources */,
+				D390965B16E79A8A0012B221 /* JShortArray.m in Sources */,
+				D390965F16E79D370012B221 /* JBooleanArray.m in Sources */,
+				D390966216E79D460012B221 /* JCharacterArray.m in Sources */,
+				D390966516E79E360012B221 /* JCharacterArraySerializer.m in Sources */,
+				D390966816E79E450012B221 /* JBooleanArraySerializer.m in Sources */,
+				D39ED1C016E8A98F001AA271 /* JNumeric.m in Sources */,
+				AA2082EC170EC5C6004521D7 /* CompatibleFieldSerializer.m in Sources */,
+				AA2082EF170ECC52004521D7 /* Field.m in Sources */,
+				AA2082F2170ECD5D004521D7 /* ObjectMap.m in Sources */,
+				AA2082F5170EE093004521D7 /* KryoInputChunked.m in Sources */,
+				AA2082F8170EE0A1004521D7 /* KryoOutputChunked.m in Sources */,
+				AAE2A062170F229C00A09229 /* KryoException.m in Sources */,
+				AAC7B98E17147A9B0045EF72 /* MapSerializer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D3EDD19B16E65FD8005339C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		D3EDD19C16E65FD8005339C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D3EDD19E16E65FD8005339C3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/Kryo.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Kryo/Kryo-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		D3EDD19F16E65FD8005339C3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/Kryo.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Kryo/Kryo-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D3EDD18A16E65FD8005339C3 /* Build configuration list for PBXProject "Kryo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3EDD19B16E65FD8005339C3 /* Debug */,
+				D3EDD19C16E65FD8005339C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3EDD19D16E65FD8005339C3 /* Build configuration list for PBXNativeTarget "Kryo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3EDD19E16E65FD8005339C3 /* Debug */,
+				D3EDD19F16E65FD8005339C3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D3EDD18716E65FD8005339C3 /* Project object */;
+}
