@@ -67,6 +67,16 @@
 const int REF = -1;
 const int NO_REF = -2;
 
+BOOL acceptsNull(id<Serializer> serializer)
+{
+	if ([serializer respondsToSelector:@selector(acceptsNull)])
+	{
+		return [serializer acceptsNull];
+	}
+	
+	return NO;
+}
+
 - (id) init
 {
 	self = [super init];
@@ -325,7 +335,7 @@ const int NO_REF = -2;
 				return;
 			}
 		}
-		else if (![serializer acceptsNull])
+		else if (!acceptsNull(serializer))
 		{
 			if (obj == nil)
 			{
@@ -375,7 +385,7 @@ const int NO_REF = -2;
 				return;
 			}
 		}
-		else if (![serializer acceptsNull])
+		else if (!acceptsNull(serializer))
 		{
 			if (obj == nil)
 			{
@@ -603,7 +613,7 @@ const int NO_REF = -2;
 		{
 			id<Serializer> serializer = [self getRegistration:type].serializer;
 
-			if (![serializer acceptsNull] && ([input readByte] == IS_NULL))
+			if (!acceptsNull(serializer) && ([input readByte] == IS_NULL))
 			{
 				return nil;
 			}
@@ -663,7 +673,7 @@ const int NO_REF = -2;
 		}
 		else
 		{
-			if (![serializer acceptsNull] && ([input readByte] == IS_NULL))
+			if (!acceptsNull(serializer) && ([input readByte] == IS_NULL))
 			{
 				return nil;
 			}

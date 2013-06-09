@@ -21,12 +21,12 @@
 @protocol Serializer <NSObject>
 @required
 
-- (BOOL)acceptsNull;
 - (void)write:(Kryo *)kryo value:(id)value to:(KryoOutput *)output;
 - (id)read:(Kryo *)kryo withClass:(Class)type from:(KryoInput *)input;
 
 @optional
 
+- (BOOL)acceptsNull;
 - (void)setGenerics:(NSArray *)generics kryo:(Kryo *)kryo;
 - (id)initWithType:(Class)type;
 - (id)initWithType:(Class)type usingKryo:(Kryo *)kryo;
