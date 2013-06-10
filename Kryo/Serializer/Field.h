@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, assign) SEL getter;
 @property (nonatomic, assign) SEL setter;
+@property (nonatomic, assign) int tag;
 @property (nonatomic, strong) id<Serializer> serializer;
 @property (nonatomic, strong) Class valueClass;
 

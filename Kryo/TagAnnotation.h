@@ -11,16 +11,10 @@
 // ======================================================================================
 
 #import <Foundation/Foundation.h>
-#import "../Serializer.h"
 
-@interface FieldSerializer : NSObject<Serializer>
-{
-	NSArray *_fields;
-	NSString *_className;
-	Class _type;
-}
+@protocol TagAnnotation <NSObject>
+@required
 
-- (id)create:(Class)type from:(KryoInput *)input usingKryo:(Kryo *)kryo;
-- (void)initializeCachedFields;
++ (NSDictionary *)taggedProperties;
 
 @end

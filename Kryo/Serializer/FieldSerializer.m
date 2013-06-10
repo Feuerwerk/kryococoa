@@ -612,9 +612,13 @@ static void resolvePropertyFields(Class type, NSMutableArray *fields, Kryo *kryo
 	
 	if (self != nil)
 	{
+		_type = type;
+		
+		// Resolve fields of "bean"
 		NSMutableArray *fields = [NSMutableArray new];
 		resolvePropertyFields(type, fields, kryo);
 		_fields = [fields sortedArrayUsingSelector:@selector(compare:)];
+		[self initializeCachedFields];
 		
 		if ([type respondsToSelector:@selector(serializingAlias)])
 		{
@@ -627,6 +631,10 @@ static void resolvePropertyFields(Class type, NSMutableArray *fields, Kryo *kryo
 	}
 	
 	return self;
+}
+
+- (void)initializeCachedFields
+{
 }
 
 - (BOOL)acceptsNull

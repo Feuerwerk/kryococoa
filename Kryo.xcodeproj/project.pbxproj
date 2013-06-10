@@ -12,6 +12,7 @@
 		AA2082F2170ECD5D004521D7 /* ObjectMap.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2082F1170ECD5D004521D7 /* ObjectMap.m */; };
 		AA2082F5170EE093004521D7 /* KryoInputChunked.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2082F4170EE093004521D7 /* KryoInputChunked.m */; };
 		AA2082F8170EE0A1004521D7 /* KryoOutputChunked.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2082F7170EE0A1004521D7 /* KryoOutputChunked.m */; };
+		AA36444E1765E26400C5D31C /* TaggedFieldSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA36444D1765E26400C5D31C /* TaggedFieldSerializer.m */; };
 		AAC7B98E17147A9B0045EF72 /* MapSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC7B98D17147A9B0045EF72 /* MapSerializer.m */; };
 		AAE2A062170F229C00A09229 /* KryoException.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE2A061170F229C00A09229 /* KryoException.m */; };
 		D308C61416E7969100FEBEE9 /* JCharacterSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D308C61316E7969100FEBEE9 /* JCharacterSerializer.m */; };
@@ -86,6 +87,9 @@
 		AA2082F4170EE093004521D7 /* KryoInputChunked.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KryoInputChunked.m; sourceTree = "<group>"; };
 		AA2082F6170EE0A1004521D7 /* KryoOutputChunked.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KryoOutputChunked.h; sourceTree = "<group>"; };
 		AA2082F7170EE0A1004521D7 /* KryoOutputChunked.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KryoOutputChunked.m; sourceTree = "<group>"; };
+		AA36444C1765E26400C5D31C /* TaggedFieldSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaggedFieldSerializer.h; path = Serializer/TaggedFieldSerializer.h; sourceTree = "<group>"; };
+		AA36444D1765E26400C5D31C /* TaggedFieldSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaggedFieldSerializer.m; path = Serializer/TaggedFieldSerializer.m; sourceTree = "<group>"; };
+		AA36444F1765F5F800C5D31C /* TagAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagAnnotation.h; sourceTree = "<group>"; };
 		AAC7B98C17147A9B0045EF72 /* MapSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapSerializer.h; path = Serializer/MapSerializer.h; sourceTree = "<group>"; };
 		AAC7B98D17147A9B0045EF72 /* MapSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapSerializer.m; path = Serializer/MapSerializer.m; sourceTree = "<group>"; };
 		AAE2A060170F229C00A09229 /* KryoException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KryoException.h; sourceTree = "<group>"; };
@@ -243,8 +247,8 @@
 		D3EDD18616E65FD8005339C3 = {
 			isa = PBXGroup;
 			children = (
-				D3EDD19416E65FD8005339C3 /* Kryo */,
 				D3EDD19116E65FD8005339C3 /* Frameworks */,
+				D3EDD19416E65FD8005339C3 /* Kryo */,
 				D3EDD19016E65FD8005339C3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -295,6 +299,7 @@
 				D3EDD1A016E66033005339C3 /* Serializer */,
 				D3EDD1B116E6604B005339C3 /* Serializer.h */,
 				D3EDD19516E65FD8005339C3 /* Supporting Files */,
+				AA36444F1765F5F800C5D31C /* TagAnnotation.h */,
 			);
 			path = Kryo;
 			sourceTree = "<group>";
@@ -358,6 +363,8 @@
 				AAC7B98D17147A9B0045EF72 /* MapSerializer.m */,
 				D3EDD20116E66062005339C3 /* StringSerializer.h */,
 				D3EDD20216E66062005339C3 /* StringSerializer.m */,
+				AA36444C1765E26400C5D31C /* TaggedFieldSerializer.h */,
+				AA36444D1765E26400C5D31C /* TaggedFieldSerializer.m */,
 			);
 			name = Serializer;
 			sourceTree = "<group>";
@@ -464,6 +471,7 @@
 				AA2082F8170EE0A1004521D7 /* KryoOutputChunked.m in Sources */,
 				AAE2A062170F229C00A09229 /* KryoException.m in Sources */,
 				AAC7B98E17147A9B0045EF72 /* MapSerializer.m in Sources */,
+				AA36444E1765E26400C5D31C /* TaggedFieldSerializer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
