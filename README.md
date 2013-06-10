@@ -98,7 +98,7 @@ The following Java-Types are directly supported by *KryoCocoa*.
 
 | Java                | Objective-C           |
 | ------------------- | --------------------- |
-| bool                | bool (**not BOOL !**) |
+| bool                | bool (not *BOOL*, because *bool* is a builtin type which can be determined by reflection whereas *BOOL* is just a typedef to *char*) |
 | byte                | char                  |
 | short               | SInt16                |
 | int                 | SInt32                |
@@ -130,6 +130,7 @@ The following Java-Types are directly supported by *KryoCocoa*.
 
 Handling Packages
 --------------------------------
+Since objective-c doesn't know the concept of namespaces or packages it is now nessesary 
 
 *SampleBean.java*
 
@@ -191,8 +192,8 @@ Handling Packages
 Handling Generics
 --------------------------------
 
-Given the following java bean with the property infoMap of type Map with key-type Integer
-and value-type String.
+Given the following java bean with the property *infoMap* of type *Map* with key-type *Integer*
+and value-type *String*.
 
 *OtherBean.java*
 
@@ -243,8 +244,8 @@ and value-type String.
 	}
 	
 To notify KryoCocoa about the generic types on the objective-c side you must provide a static
-method named *<name of property>Generics* returning a NSArray with the two Class-objects, JInteger
-and NSString in this case.
+method named *<name of property>Generics* returning a NSArray with the two Class-objects, *JInteger*
+and *NSString* in this case.
 
 *OtherBean.h*
 
@@ -279,3 +280,108 @@ and NSString in this case.
 	}
 
 	@end
+	
+Using TaggedFieldSerializer
+--------------------------------
+
+If you want to use *TaggedFieldSerializer* as default serializer your serializable classes
+have to conform to protocol *TagAnnotation* which defines the static method *taggedProperties*
+which returns a dictionary from property name to tag value. If a tag value is negative it is
+treated as deprecated.
+
+*TaggedBean.java*
+
+	package test;
+	
+	import com.esotericsoftware.kryo.serializers;
+
+	public class TaggedBean
+	{
+		@TaggedFieldSerializer.Tag(1)
+		private int value;
+
+		@TaggedFieldSerializer.Tag(2)
+		private String name;
+
+		@Deprecated
+		@TaggedFieldSerializer.Tag(3)
+		private int deprecatedField;
+
+		public TaggedBean()
+		{
+		}
+		
+		public int getValue()
+		{
+			return value;
+		}
+		
+		public void setValue(int value)
+		{
+			this.value = value;
+		}
+		
+		public String getName()
+		{
+			return name;
+		}
+		
+		public void setName(String name)
+		{
+			this.name = name;
+		}
+		
+		public int getDeprecatedField()
+		{
+			return deprecatedField;
+		}
+		
+		public void setDeprecatedField(int deprecatedField)
+		{
+			this.deprecatedField = deprecatedField;
+		}
+	}
+
+*TaggedBean.h*
+
+	#import <Foundation/Foundation.h>
+	#import "SerializationAnnotation.h"
+	#import "TagAnnotation.h"
+
+	@interface TaggedBean : NSObject<SerializationAnnotation, TagAnnotation>
+
+	@property (nonatomic, assign) SInt32 value;
+	@property (nonatomic, strong) NSString *name;
+	@property (nonatomic, strong) SInt32 deprecatedField;
+
+	@end
+
+*TaggedBean.m*
+
+	#import "TaggedBean.h"
+
+	@implementation TaggedBean
+
+	+ (NSString *)serializingAlias
+	{
+		return @"test.TaggedBean";
+	}
+	
+	+ (NSDictionary *)taggedProperties
+	{
+		return [NSDictionary dictionaryWithObjectsAndKeys:@1, @"value", @2, @"name", @-3, @"deprecatedField", nil];
+	}
+
+	@end
+
+Limitations
+--------------------------------
+
+Currently there is no support for cloning objects. Also *BlowfishSerializer* and *DeflateSerialier*
+aren't ported which is not a technical problem but lack of time.
+
+*JavaSerializer* will probably never be ported because of the different serialization API in Cocoa
+but maybe someone has a good idea for that.
+
+Since NSDictionary require the key-type to conform to the protocol *NSCopying* not every key-type which is
+possible under java can also be used under objective-c.
