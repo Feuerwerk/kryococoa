@@ -67,15 +67,68 @@
 
 - (void)write:(Kryo *)kryo value:(id)value to:(KryoOutput *)output
 {
-	NSArray *items = value;
+	NSDictionary *items = value;
 	int itemCount = (int)items.count;
 	
 	[output writeInt:itemCount optimizePositive:YES];
 	
-	for (int i = 0; i < itemCount; i++)
+	id<Serializer> keySerializer = self.keySerializer;
+	id<Serializer> valueSerializer = self.valueSerializer;
+
+	if (_keyGenericType != nil)
 	{
-		[kryo writeClassAndObject:[items objectAtIndex:i] to:output];
+		if (keySerializer == nil)
+		{
+			keySerializer = [kryo getSerializer:_keyGenericType];
+		}
+
+		_keyGenericType = nil;
 	}
+	
+	if (_valueGenericType != nil)
+	{
+		if (valueSerializer == nil)
+		{
+			valueSerializer = [kryo getSerializer:_valueGenericType];
+		}
+		
+		_valueGenericType = nil;
+	}
+	
+	[items enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop)
+	 {
+		if (keySerializer != nil)
+		{
+			if (_keysCanBeNull)
+			{
+				[kryo writeNullableObject:key to:output usingSerializer:keySerializer];
+			}
+			else
+			{
+				[kryo writeObject:key to:output usingSerializer:keySerializer];
+			}
+		}
+		else
+		{
+			[kryo writeClassAndObject:key to:output];
+		}
+		 
+		if (valueSerializer != nil)
+		{
+			if (_valuesCanBeNull)
+			{
+				[kryo writeNullableObject:output to:output usingSerializer:valueSerializer];
+			}
+			else
+			{
+				[kryo writeObject:obj to:output usingSerializer:keySerializer];
+			}
+		}
+		else
+		{
+			[kryo writeClassAndObject:obj to:output];
+		}
+	 }];
 }
 
 - (id) read:(Kryo *)kryo withClass:(Class)clazz from:(KryoInput *)input
