@@ -26,9 +26,78 @@
 // DAMAGE.
 // ======================================================================================
 
-#import <Foundation/Foundation.h>
-#import "../Serializer.h"
+#import "EnumSerializer.h"
+#import "../Enum.h"
+#import "../SerializationAnnotation.h"
+#import "../KryoInput.h"
+#import "../KryoOutput.h"
 
-@interface JBooleanSerializer : NSObject<Serializer>
+@implementation EnumSerializer
+
+static const SInt32 NULL_VALUE = 0;
+
+- (id)initWithType:(Class)type
+{
+	self = [super init];
+	
+	if (self != nil)
+	{
+		_type = type;
+		
+		if ([type respondsToSelector:@selector(serializingAlias)])
+		{
+			_className = [type serializingAlias];
+		}
+		else
+		{
+			_className = NSStringFromClass(type);
+		}
+	}
+	
+	return self;
+}
+
+- (BOOL)acceptsNull
+{
+	return YES;
+}
+
+- (BOOL)isFinal:(Class)type
+{
+	return YES;
+}
+
+- (void)write:(Kryo *)kryo value:(id)value to:(KryoOutput *)output
+{
+	SInt32 ordinal;
+	
+	if (value == nil)
+	{
+		ordinal = NULL_VALUE;
+	}
+	else
+	{
+		ordinal = [value ordinal] + 1;
+	}
+	
+	[output writeInt:ordinal optimizePositive:YES];
+}
+
+- (id)read:(Kryo *)kryo withClass:(Class)clazz from:(KryoInput *)input
+{
+	SInt32 ordinal = [input readIntOptimizePositive:YES];
+	
+	if (ordinal == NULL_VALUE)
+	{
+		return nil;
+	}
+	
+	return [_type valueOfOrdinal:ordinal - 1];
+}
+
+- (NSString *)getClassName:(Class)type
+{
+	return _className;
+}
 
 @end

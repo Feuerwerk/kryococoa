@@ -130,7 +130,10 @@ The following Java-Types are directly supported by *KryoCocoa*.
 
 Handling Packages
 --------------------------------
-Since objective-c doesn't know the concept of namespaces or packages it is now nessesary 
+Since objective-c doesn't know the concept of namespaces or packages it is now nessesary to provide KryoCocoa with this information.
+All you have to do is extending your class with the SerializationAnnotation protocol and providing the method *serializingAlias* which
+must return the full qualified java class name (including the packages). This means that it is not important that the name of the
+Objective-C class is the same as on Java side as long as you provide the java classname with *serializingAlias*.
 
 *SampleBean.java*
 
@@ -244,7 +247,7 @@ and value-type *String*.
 	}
 	
 To notify KryoCocoa about the generic types on the objective-c side you must provide a static
-method named *<name of property>Generics* returning a NSArray with the two Class-objects, *JInteger*
+method named *&lt;name of property&gt;Generics* returning a NSArray with the two Class-objects, *JInteger*
 and *NSString* in this case.
 
 *OtherBean.h*
@@ -280,6 +283,62 @@ and *NSString* in this case.
 	}
 
 	@end
+
+Enumerations
+--------------------------------
+
+It it possible to use Enumerations as property types. But on Objective-C side this means that
+you can't use the native C enums, the corresponding type must be implemented as a class.
+There is a very fine small Enum-Implementation on the web ([gandreas Blog](http://www.gandreas.com/blog/files/gandenum.html))
+which was included into KryoCocoa.
+
+*SampleEnum.java*
+
+	package test;
+
+	public enum SampleEnum
+	{
+		Sun, Earth, Moon
+	}
+
+*SampleEnum.h*
+
+	#import <Foundation/Foundation.h>
+	#import "Enum.h"
+	#import "SerializationAnnotation.h"
+
+	@interface SampleEnum : Enum<SerializationAnnotation>
+
+	+ (SampleEnum *)SUN;
+	+ (SampleEnum *)EARTH;
+	+ (SampleEnum *)MOON;
+
+	@end
+
+*SampleEnum.m*
+
+	#import "SampleEnum.h"
+
+	@implementation SampleEnum
+
+	ENUM_ELEMENT(SUN, 0, nil)
+	ENUM_ELEMENT(EARTH, 1, nil)
+	ENUM_ELEMENT(MOON, 2, nil)
+
+	+ (NSString *)serializingAlias
+	{
+		return @"test.SampleEnum";
+	}
+
+	@end
+
+To create a KryoCocoa compatible Enumeration-Class all you have to do is creating a new class inherited by Enum
+(optionally extended by SerializationAnnotation to annote the full Java classname) adding a static method for
+each enumeration constant and add an ENUM_ELEMENT-entry for each constant in the m-file where the first parameter
+of ENUM_ELEMENT is for the constant name, the second is the ordinal value which must correspond to the ordinal value
+on java side and as third parameter any key/value-pair you want as extended information for your enum constant.
+See gandreas blog for further details on this.
+It is important that the constant names must be uppercase because only uppercase-names will be recognized currently.
 	
 Using TaggedFieldSerializer
 --------------------------------
@@ -377,8 +436,32 @@ treated as deprecated.
 Limitations
 --------------------------------
 
-Currently there is no support for cloning objects. Also *BlowfishSerializer* and *DeflateSerialier*
-aren't ported which is not a technical problem but lack of time.
+Currently there is no support for cloning objects. On java side you can annote a property with @NotNull
+which is currently not supported.
+
+The following Serializers are still not ported which is not a technical problem but lack of time:
+
+- BlowfishSerializer
+- DeflateSerialier
+- BigDecimalSerializer
+- ClassSerializer
+- EnumSetSerializer
+- CurrencySerializer
+- StringBufferSerializer
+- StringBuilderSerializer
+- KryoSerializableSerializer
+- TimeZoneSerializer
+- CalendarSerializer
+- TreeMapSerializer
+
+I'm unsure if this Serializers can be ported:
+
+- CollectionsEmptyListSerializer
+- CollectionsEmptyMapSerializer
+- CollectionsEmptySetSerializer
+- CollectionsSingletonListSerializer
+- CollectionsSingletonMapSerializer
+- CollectionsSingletonSetSerializer
 
 *JavaSerializer* will probably never be ported because of the different serialization API in Cocoa
 but maybe someone has a good idea for that.

@@ -29,6 +29,13 @@
 #import <Foundation/Foundation.h>
 #import "../Serializer.h"
 
-@interface JBooleanSerializer : NSObject<Serializer>
+@interface EnumSerializer : NSObject<Serializer>
+{
+	NSString *_className;
+	Class _type;
+}
+
+- (id)initWithType:(Class)type;
+- (BOOL)isFinal:(Class)type;
 
 @end

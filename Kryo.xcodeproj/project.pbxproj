@@ -13,6 +13,8 @@
 		AA2082F5170EE093004521D7 /* KryoInputChunked.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2082F4170EE093004521D7 /* KryoInputChunked.m */; };
 		AA2082F8170EE0A1004521D7 /* KryoOutputChunked.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2082F7170EE0A1004521D7 /* KryoOutputChunked.m */; };
 		AA36444E1765E26400C5D31C /* TaggedFieldSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA36444D1765E26400C5D31C /* TaggedFieldSerializer.m */; };
+		AA4C17711778B71A009F6BD0 /* EnumSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4C17701778B71A009F6BD0 /* EnumSerializer.m */; };
+		AA4C17781779ACC0009F6BD0 /* Enum.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4C17771779ACC0009F6BD0 /* Enum.m */; };
 		AAC7B98E17147A9B0045EF72 /* MapSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC7B98D17147A9B0045EF72 /* MapSerializer.m */; };
 		AAE2A062170F229C00A09229 /* KryoException.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE2A061170F229C00A09229 /* KryoException.m */; };
 		D308C61416E7969100FEBEE9 /* JCharacterSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = D308C61316E7969100FEBEE9 /* JCharacterSerializer.m */; };
@@ -90,6 +92,10 @@
 		AA36444C1765E26400C5D31C /* TaggedFieldSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaggedFieldSerializer.h; path = Serializer/TaggedFieldSerializer.h; sourceTree = "<group>"; };
 		AA36444D1765E26400C5D31C /* TaggedFieldSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaggedFieldSerializer.m; path = Serializer/TaggedFieldSerializer.m; sourceTree = "<group>"; };
 		AA36444F1765F5F800C5D31C /* TagAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagAnnotation.h; sourceTree = "<group>"; };
+		AA4C176F1778B71A009F6BD0 /* EnumSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnumSerializer.h; path = Serializer/EnumSerializer.h; sourceTree = "<group>"; };
+		AA4C17701778B71A009F6BD0 /* EnumSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnumSerializer.m; path = Serializer/EnumSerializer.m; sourceTree = "<group>"; };
+		AA4C17761779ACC0009F6BD0 /* Enum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enum.h; sourceTree = "<group>"; };
+		AA4C17771779ACC0009F6BD0 /* Enum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Enum.m; sourceTree = "<group>"; };
 		AAC7B98C17147A9B0045EF72 /* MapSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapSerializer.h; path = Serializer/MapSerializer.h; sourceTree = "<group>"; };
 		AAC7B98D17147A9B0045EF72 /* MapSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapSerializer.m; path = Serializer/MapSerializer.m; sourceTree = "<group>"; };
 		AAE2A060170F229C00A09229 /* KryoException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KryoException.h; sourceTree = "<group>"; };
@@ -275,6 +281,8 @@
 				D3EDD1A316E6604B005339C3 /* ClassResolver.h */,
 				D3EDD1A416E6604B005339C3 /* DefaultClassResolver.h */,
 				D3EDD1A516E6604B005339C3 /* DefaultClassResolver.m */,
+				AA4C17761779ACC0009F6BD0 /* Enum.h */,
+				AA4C17771779ACC0009F6BD0 /* Enum.m */,
 				AA05DE991756253900428DD7 /* Java Types */,
 				D3EDD19716E65FD8005339C3 /* Kryo.h */,
 				D3EDD19916E65FD8005339C3 /* Kryo.m */,
@@ -323,6 +331,8 @@
 				D3EDD1E216E66062005339C3 /* DataSerializer.m */,
 				D3EDD1E316E66062005339C3 /* DateSerializer.h */,
 				D3EDD1E416E66062005339C3 /* DateSerializer.m */,
+				AA4C176F1778B71A009F6BD0 /* EnumSerializer.h */,
+				AA4C17701778B71A009F6BD0 /* EnumSerializer.m */,
 				AA2082ED170ECBEE004521D7 /* Field.h */,
 				AA2082EE170ECC52004521D7 /* Field.m */,
 				D3EDD1E516E66062005339C3 /* FieldSerializer.h */,
@@ -472,6 +482,8 @@
 				AAE2A062170F229C00A09229 /* KryoException.m in Sources */,
 				AAC7B98E17147A9B0045EF72 /* MapSerializer.m in Sources */,
 				AA36444E1765E26400C5D31C /* TaggedFieldSerializer.m in Sources */,
+				AA4C17711778B71A009F6BD0 /* EnumSerializer.m in Sources */,
+				AA4C17781779ACC0009F6BD0 /* Enum.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
