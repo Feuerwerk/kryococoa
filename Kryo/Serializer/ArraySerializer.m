@@ -49,23 +49,64 @@
 	}
 }
 
+- (void)setGenerics:(NSArray *)generics kryo:(Kryo *)kryo
+{
+	Class newValueGenericType = [generics objectAtIndex:0];
+	
+	if ([kryo isFinal:newValueGenericType])
+	{
+		_valueGenericType = newValueGenericType;
+	}
+}
+
 - (id) read:(Kryo *)kryo withClass:(Class)clazz from:(KryoInput *)input
 {
 	SInt32 length = [input readIntOptimizePositive:YES];
 	NSMutableArray *items = [NSMutableArray arrayWithCapacity:length];
 
+    Class valueClass = self.valueClass;
+	id<Serializer> valueSerializer = self.valueSerializer;
+	
+	if (_valueGenericType != nil)
+	{
+		valueClass = _valueGenericType;
+        
+		if (valueSerializer == nil)
+		{
+			valueSerializer = [kryo getSerializer:valueClass];
+		}
+        
+		_valueGenericType = nil;
+	}
 	[kryo reference:items];
 
 	for (int i = 0; i < length; i++)
 	{
-		id item = [kryo readClassAndObject:input];
-		
-		if (item == nil)
+        
+        id value;
+        
+		if (valueSerializer != nil)
 		{
-			item = [NSNull null];
+			if (_valuesCanBeNull)
+			{
+				value = [kryo readNullableObject:input ofClass:valueClass usingSerializer:valueSerializer];
+			}
+			else
+			{
+				value = [kryo readObject:input ofClass:valueClass usingSerializer:valueSerializer];
+			}
+		}
+		else
+		{
+			value = [kryo readClassAndObject:input];
+		}
+        
+        if (value == nil)
+		{
+			value = [NSNull null];
 		}
 		
-		[items addObject:item];
+		[items addObject:value];
 	}
 
 	return items;
