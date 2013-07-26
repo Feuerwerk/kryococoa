@@ -43,6 +43,7 @@
 #import "Serializer/FieldSerializer.h"
 #import "Serializer/DateSerializer.h"
 #import "Serializer/StringSerializer.h"
+#import "Serializer/SetSerializer.h"
 #import "Serializer/MapSerializer.h"
 #import "Serializer/ArraySerializer.h"
 #import "Serializer/DataSerializer.h"
@@ -136,6 +137,7 @@ BOOL acceptsNull(id<Serializer> serializer)
 		// Default Aliases
 		[self registerAlias:@"java.util.TreeMap" forClass:[NSDictionary class]];
 		[self registerAlias:@"java.util.HashMap" forClass:[NSDictionary class]];
+		[self registerAlias:@"java.util.HashSet" forClass:[NSSet class]];
 		[self registerAlias:@"java.util.ArrayList" forClass:[NSArray class]];
 		[self registerAlias:@"java.util.Date" forClass:[NSDate class]];
 		

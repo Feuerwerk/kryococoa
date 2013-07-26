@@ -31,7 +31,7 @@
 
 @implementation MapSerializer
 
-- (MapSerializer *)init
+- (id)init
 {
 	self = [super init];
 	
@@ -131,7 +131,7 @@
 	 }];
 }
 
-- (id) read:(Kryo *)kryo withClass:(Class)clazz from:(KryoInput *)input
+- (id)read:(Kryo *)kryo withClass:(Class)clazz from:(KryoInput *)input
 {
 	//Map map = create(kryo, input, type);
 	NSMutableDictionary *map = [NSMutableDictionary new];
