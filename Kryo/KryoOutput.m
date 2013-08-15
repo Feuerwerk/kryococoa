@@ -447,7 +447,6 @@
 		if (c <= 0x007F)
 		{
 			_buffer[_position++] = (uint8_t)c;
-			length = 1;
 		}
 		else if (c > 0x07FF)
 		{

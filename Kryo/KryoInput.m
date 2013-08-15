@@ -459,11 +459,12 @@
 	charCount--;
 	
 	// Reserve memory for char buffer
-	unichar *chars = malloc(charCount * sizeof(unichar));
+	unichar *chars = malloc((charCount + 1) * sizeof(unichar));
 	
 	@try
 	{
 		[self readUtf8:charCount intoBuffer:chars];
+		chars[charCount] = 0;
 		
 		NSString *string = [[NSString alloc] initWithCharactersNoCopy:chars length:charCount freeWhenDone:YES];
 		chars = NULL;
