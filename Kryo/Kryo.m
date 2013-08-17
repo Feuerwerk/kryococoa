@@ -818,9 +818,9 @@ BOOL acceptsNull(id<Serializer> serializer)
 
 - (BOOL)isFinal:(Class)type
 {
-	Registration *registration = [self getRegistration:type];
+	Registration *registration = [_classResolver getRegistration:type];
 	
-	if ([registration.serializer respondsToSelector:@selector(isFinal:)])
+	if ((registration != nil) && [registration.serializer respondsToSelector:@selector(isFinal:)])
 	{
 		return [registration.serializer isFinal:type];
 	}
