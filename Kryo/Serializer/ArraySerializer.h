@@ -30,5 +30,12 @@
 #import "../Serializer.h"
 
 @interface ArraySerializer : NSObject<Serializer>
+{
+	Class _valueGenericType;
+}
+
+@property (nonatomic, strong) Class valueClass;
+@property (nonatomic, strong) id<Serializer> valueSerializer;
+@property (nonatomic, assign) BOOL valuesCanBeNull;
 
 @end
