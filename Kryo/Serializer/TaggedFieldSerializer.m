@@ -37,11 +37,6 @@
 
 @implementation TaggedFieldSerializer
 
-- (id)initWithType:(Class)type usingKryo:(Kryo *)kryo
-{
-	return [super initWithType:type usingKryo:kryo];
-}
-
 - (void)initializeCachedFields
 {
 	if (class_conformsToProtocol(_type, @protocol(TagAnnotation)))

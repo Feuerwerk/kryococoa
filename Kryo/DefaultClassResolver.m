@@ -104,7 +104,15 @@ const int NAME = -1;
 	newRegistration.serializer = [_kryo getDefaultSerializer:type];
 	newRegistration.ident = NAME;
 
-	return [self addRegistration:newRegistration];
+	[self addRegistration:newRegistration];
+	
+	// The Serializer will be seted up after the class is registered to avoid recursion problems
+	if ([newRegistration.serializer respondsToSelector:@selector(setup:)])
+	{
+		[newRegistration.serializer setup:_kryo];
+	}
+	
+	return newRegistration;
 }
 
 - (Registration *)readClass:(KryoInput *)input

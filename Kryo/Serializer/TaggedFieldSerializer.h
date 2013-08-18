@@ -30,6 +30,4 @@
 
 @interface TaggedFieldSerializer : FieldSerializer
 
-- (id)initWithType:(Class)type usingKryo:(Kryo *)kryo;
-
 @end

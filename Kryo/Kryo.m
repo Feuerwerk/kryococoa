@@ -818,7 +818,7 @@ BOOL acceptsNull(id<Serializer> serializer)
 
 - (BOOL)isFinal:(Class)type
 {
-	Registration *registration = [_classResolver getRegistration:type];
+	Registration *registration = [self getRegistration:type];
 	
 	if ((registration != nil) && [registration.serializer respondsToSelector:@selector(isFinal:)])
 	{
@@ -902,10 +902,6 @@ BOOL acceptsNull(id<Serializer> serializer)
 	if ([serializer respondsToSelector:@selector(initWithType:)])
 	{
 		serializer = [serializer initWithType:type];
-	}
-	else if ([serializer respondsToSelector:@selector(initWithType:usingKryo:)])
-	{
-		serializer = [serializer initWithType:type usingKryo:self];
 	}
 	else
 	{

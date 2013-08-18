@@ -63,7 +63,6 @@
 {
 	SInt32 length = [input readIntOptimizePositive:YES];
 	NSMutableArray *items = [NSMutableArray arrayWithCapacity:length];
-
     Class valueClass = self.valueClass;
 	id<Serializer> valueSerializer = self.valueSerializer;
 	
@@ -78,11 +77,11 @@
         
 		_valueGenericType = nil;
 	}
+
 	[kryo reference:items];
 
 	for (int i = 0; i < length; i++)
 	{
-        
         id value;
         
 		if (valueSerializer != nil)

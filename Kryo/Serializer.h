@@ -42,10 +42,11 @@
 
 @optional
 
+- (id)initWithType:(Class)type;
+//- (id)initWithType:(Class)type usingKryo:(Kryo *)kryo;
+- (void)setup:(Kryo *)kryo;
 - (BOOL)acceptsNull;
 - (void)setGenerics:(NSArray *)generics kryo:(Kryo *)kryo;
-- (id)initWithType:(Class)type;
-- (id)initWithType:(Class)type usingKryo:(Kryo *)kryo;
 - (NSString *)getClassName:(Class)type;
 - (BOOL)isFinal:(Class)type;
 
