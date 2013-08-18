@@ -226,7 +226,14 @@ BOOL acceptsNull(id<Serializer> serializer)
 
 - (void)registerClass:(Class)type andIdent:(NSInteger)ident
 {
-	[self registerClass:type usingSerializer:[self getDefaultSerializer:type] andIdent:ident];
+	id<Serializer> serializer = [self getDefaultSerializer:type];
+	
+	if ([serializer respondsToSelector:@selector(setup:)])
+	{
+		[serializer setup:self];
+	}
+	
+	[self registerClass:type usingSerializer:serializer andIdent:ident];
 }
 
 - (void)registerClass:(Class)type usingSerializer:(id<Serializer>)serializer andIdent:(NSInteger)ident
