@@ -39,19 +39,47 @@
 
 - (void)initializeCachedFields
 {
-	if (class_conformsToProtocol(_type, @protocol(TagAnnotation)))
+	if (!class_conformsToProtocol(_type, @protocol(TagAnnotation)))
 	{
 		[KryoException raise:[NSString stringWithFormat:@"Class %@ must conform to protocol TagAnnotation", NSStringFromClass(_type)]];
 	}
 
-	NSDictionary *tags = [_type taggedProperties];
+	Class currType = _type;
+	NSDictionary *tags = nil;
+	NSMutableDictionary *mergedTags = nil;
+	
+	while (currType != nil)
+	{
+		if (class_conformsToProtocol(currType, @protocol(TagAnnotation)))
+		{
+			NSDictionary *localTags = [currType taggedProperties];
+			
+			if (tags == nil)
+			{
+				tags = localTags;
+			}
+			else
+			{
+				if (mergedTags == nil)
+				{
+					mergedTags = [NSMutableDictionary dictionaryWithDictionary:tags];
+					tags = mergedTags;
+				}
+				
+				[mergedTags addEntriesFromDictionary:localTags];
+			}
+		}
+	
+		currType = class_getSuperclass(currType);
+	}
+
 	NSMutableArray *newFields = _fields.mutableCopy;
 	NSUInteger i = 0;
 	NSUInteger fieldCount = newFields.count;
 	
 	while (i < fieldCount)
 	{
-		Field *field = [newFields objectAtIndex:i];
+		Field *field = newFields[i];
 		NSNumber *tag = [tags objectForKey:field.name];
 		
 		if ((tag == nil) || (tag.intValue <= 0)) // a negative value means deprecated
@@ -75,7 +103,7 @@
 	
 	for (NSUInteger i = 0, fieldCount = _fields.count; i < fieldCount; i++)
 	{
-		Field *field = [_fields objectAtIndex:i];
+		Field *field = _fields[i];
 		[output writeInt:field.tag optimizePositive:YES];
 		[field write:value to:output usingKryo:kryo];
 	}
@@ -95,7 +123,7 @@
 		
 		for (NSUInteger j = 0, fieldCount = _fields.count; j < fieldCount; j++)
 		{
-			Field *tempField = [_fields objectAtIndex:i];
+			Field *tempField = _fields[j];
 			
 			if (tag == tempField.tag)
 			{
