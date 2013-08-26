@@ -66,7 +66,18 @@
 					tags = mergedTags;
 				}
 				
-				[mergedTags addEntriesFromDictionary:localTags];
+				for (NSString *fieldName in localTags)
+				{
+					NSNumber *localTag = [localTags objectForKey:fieldName];
+					NSNumber *existingTag = [mergedTags objectForKey:fieldName];
+					
+					if ((existingTag != nil) && ![existingTag isEqualToNumber:localTag])
+					{
+						[KryoException raise:[NSString stringWithFormat:@"Field %@ of type %@ is multiply tagged with different numeric values: %@ <> %@", fieldName, NSStringFromClass(_type), localTags, existingTag]];
+					}
+
+					[mergedTags setObject:localTag forKey:fieldName];
+				}
 			}
 		}
 	
