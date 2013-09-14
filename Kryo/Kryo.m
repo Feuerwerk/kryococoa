@@ -349,11 +349,6 @@ BOOL acceptsNull(id<Serializer> serializer)
 	
 	@try
 	{
-		if ((_referenceResolver != nil) && [self writeReferenceOrNull:obj to:output mayBeNull:NO])
-		{
-			return;
-		}
-	
 		id<Serializer> serializer = [self getRegistration:type].serializer;
 
 		if (_referenceResolver != nil)
