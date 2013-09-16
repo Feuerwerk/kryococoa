@@ -333,14 +333,15 @@
 
 - (SInt64)readLongOptimizePositive:(BOOL)optimizePositive
 {
-	UInt64 result = [self readULong];
+	UInt64 temp = [self readULong];
+	SInt64 result = *(SInt64 *)&temp;
 	
 	if (!optimizePositive)
 	{
 		result = (result >> 1) ^ -(result & 1);
 	}
 
-	return *(SInt64 *)&result;
+	return result;
 }
 
 - (UInt64)readULong
