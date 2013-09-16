@@ -268,14 +268,15 @@
 
 - (SInt32)readIntOptimizePositive:(BOOL)optimizePositive
 {
-	UInt32 result = [self readUInt];
+	UInt32 temp = [self readUInt];
+	SInt32 result = *(SInt32 *)&temp;
 
 	if (!optimizePositive)
 	{
 		result = ((result >> 1) ^ -(result & 1));
 	}
 	
-	return *(SInt32 *)&result;
+	return result;
 }
 
 - (UInt32)readUInt

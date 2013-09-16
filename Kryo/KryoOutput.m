@@ -33,8 +33,8 @@
 @interface KryoOutput()
 
 - (BOOL)require:(NSUInteger)required;
-- (NSUInteger)writeInternalInt:(UInt32)value optimizePositive:(BOOL)optimizePositive;
-- (NSUInteger)writeInternalLong:(UInt64)value optimizePositive:(BOOL)optimizePositive;
+- (NSUInteger)writeInternalInt:(UInt32)value;
+- (NSUInteger)writeInternalLong:(UInt64)value;
 - (void)writeUtf8Length:(NSUInteger)value;
 - (void)writeAsciiSlow:(NSString *)value length:(NSUInteger)length;
 - (void)writeStringSlow:(NSString *)value length:(NSUInteger)length beginningFrom:(NSUInteger)index;
@@ -202,12 +202,17 @@
 
 - (NSUInteger)writeInt:(SInt32)value optimizePositive:(BOOL)optimizePositive
 {
-	return [self writeInternalInt:*(UInt32 *)&value optimizePositive:optimizePositive];
+	if (!optimizePositive)
+	{
+		value = (value << 1) ^ (value >> 31);
+	}
+	
+	return [self writeInternalInt:*(UInt32 *)&value];
 }
 
 - (NSUInteger)writeUInt:(UInt32)value
 {
-	return [self writeInternalInt:value optimizePositive:YES];
+	return [self writeInternalInt:value];
 }
 
 - (void)writeLong:(SInt64)value
@@ -227,12 +232,17 @@
 
 - (NSUInteger)writeLong:(SInt64)value optimizePositive:(BOOL)optimizePositive
 {
-	return [self writeInternalLong:*(UInt64 *)&value optimizePositive:optimizePositive];
+	if (!optimizePositive)
+	{
+		value = (value << 1) ^ (value >> 63);
+	}
+	
+	return [self writeInternalLong:*(UInt64 *)&value];
 }
 
 - (NSUInteger)writeULong:(UInt64)value
 {
-	return [self writeInternalLong:value optimizePositive:YES];
+	return [self writeInternalLong:value];
 }
 
 - (void)writeFloat:(float)value
@@ -464,13 +474,8 @@
 	}
 }
 
-- (NSUInteger)writeInternalInt:(UInt32)value optimizePositive:(BOOL)optimizePositive
+- (NSUInteger)writeInternalInt:(UInt32)value
 {
-	if (!optimizePositive)
-	{
-		value = (value << 1) ^ (value >> 31);
-	}
-	
 	if (value >> 7 == 0)
 	{
 		[self require:1];
@@ -514,13 +519,8 @@
 	return 5;
 }
 
-- (NSUInteger)writeInternalLong:(UInt64)value optimizePositive:(BOOL)optimizePositive
+- (NSUInteger)writeInternalLong:(UInt64)value
 {
-	if (!optimizePositive)
-	{
-		value = (value << 1) ^ (value >> 63);
-	}
-	
 	if (value >> 7 == 0)
 	{
 		[self require:1];
