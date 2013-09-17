@@ -51,6 +51,7 @@
 #import "Registration.h"
 #import "Enum.h"
 #import "SerializationAnnotation.h"
+#import "FinalAnnotation.h"
 #import <objc/runtime.h>
 
 @interface DefaultSerializerEntry : NSObject
@@ -822,11 +823,34 @@ BOOL acceptsNull(id<Serializer> serializer)
 {
 	Registration *registration = [self getRegistration:type];
 	
-	if ((registration != nil) && [registration.serializer respondsToSelector:@selector(isFinal:)])
+	assert(registration != nil);
+	
+	switch (registration.finalState)
 	{
-		return [registration.serializer isFinal:type];
+		case FINAL_TRUE:
+			return YES;
+				
+		case FINAL_FALSE:
+			return NO;
+				
+		default:
+			break;
+	}
+		
+	if ([registration.serializer respondsToSelector:@selector(isFinal:)])
+	{
+		BOOL result = [registration.serializer isFinal:type];
+		registration.finalState = result ? FINAL_TRUE : FINAL_FALSE;
+		return result;
 	}
 	
+	if ([type conformsToProtocol:@protocol(FinalAnnotation)])
+    {
+		registration.finalState = FINAL_TRUE;
+        return YES;
+    }
+
+	registration.finalState = FINAL_FALSE;
 	return NO;
 }
 

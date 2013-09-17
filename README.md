@@ -339,6 +339,12 @@ of ENUM_ELEMENT is for the constant name, the second is the ordinal value which 
 on java side and as third parameter any key/value-pair you want as extended information for your enum constant.
 See gandreas blog for further details on this.
 It is important that the constant names must be uppercase because only uppercase-names will be recognized currently.
+
+Handling *final* classes
+--------------------------------
+
+Dealing with final classes is pretty easy. If you have to write your own serializer for a class just implement the
+*isFinal*-Method. If you have a simple bean, which needs no special serializer, just add the protocol *FinalAnnotation* which needs no method to be implemented. The fact that your class implements the protocol is enought to mark this class as *final*.
 	
 Using TaggedFieldSerializer
 --------------------------------

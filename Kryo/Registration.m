@@ -30,4 +30,16 @@
 
 @implementation Registration
 
+- (id)init
+{
+	self = [super init];
+	
+	if (self != nil)
+	{
+		_finalState = FINAL_UNDEFINED;
+	}
+	
+	return self;
+}
+
 @end

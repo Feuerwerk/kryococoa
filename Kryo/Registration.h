@@ -28,11 +28,13 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum { FINAL_UNDEFINED, FINAL_TRUE, FINAL_FALSE } FinalState;
 
 @protocol Serializer;
 
 @interface Registration : NSObject
 
+@property (nonatomic, assign) FinalState finalState;
 @property (nonatomic, assign) SInt32 ident;
 @property (nonatomic, strong) Class type;
 @property (nonatomic, strong) id<Serializer> serializer;

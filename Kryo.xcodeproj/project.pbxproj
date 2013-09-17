@@ -101,6 +101,7 @@
 		AA6F20A617A288030087C3AC /* SetSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetSerializer.m; path = Serializer/SetSerializer.m; sourceTree = "<group>"; };
 		AAC7B98C17147A9B0045EF72 /* MapSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapSerializer.h; path = Serializer/MapSerializer.h; sourceTree = "<group>"; };
 		AAC7B98D17147A9B0045EF72 /* MapSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapSerializer.m; path = Serializer/MapSerializer.m; sourceTree = "<group>"; };
+		AAD34D8417E8597A005E7F34 /* FinalAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinalAnnotation.h; sourceTree = "<group>"; };
 		AAE2A060170F229C00A09229 /* KryoException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KryoException.h; sourceTree = "<group>"; };
 		AAE2A061170F229C00A09229 /* KryoException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KryoException.m; sourceTree = "<group>"; };
 		D308C60E16E76C4700FEBEE9 /* SerializationAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SerializationAnnotation.h; sourceTree = "<group>"; };
@@ -286,6 +287,7 @@
 				D3EDD1A516E6604B005339C3 /* DefaultClassResolver.m */,
 				AA4C17761779ACC0009F6BD0 /* Enum.h */,
 				AA4C17771779ACC0009F6BD0 /* Enum.m */,
+				AAD34D8417E8597A005E7F34 /* FinalAnnotation.h */,
 				AA05DE991756253900428DD7 /* Java Types */,
 				D3EDD19716E65FD8005339C3 /* Kryo.h */,
 				D3EDD19916E65FD8005339C3 /* Kryo.m */,
