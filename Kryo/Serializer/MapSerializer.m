@@ -117,7 +117,7 @@
 		{
 			if (_valuesCanBeNull)
 			{
-				[kryo writeNullableObject:output to:output usingSerializer:valueSerializer];
+				[kryo writeNullableObject:obj to:output usingSerializer:valueSerializer];
 			}
 			else
 			{
