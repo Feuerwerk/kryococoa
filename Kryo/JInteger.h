@@ -45,4 +45,8 @@
 - (float)floatValue;
 - (double)doubleValue;
 
+- (BOOL)isEqual:(id)anObject;
+- (BOOL)isEqualToInteger:(JInteger *)anInteger;
+- (NSUInteger)hash;
+
 @end

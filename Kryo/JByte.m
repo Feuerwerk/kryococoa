@@ -81,6 +81,53 @@
 	return _value;
 }
 
+- (BOOL)isEqual:(id)anObject
+{
+	if (anObject == self)
+	{
+		return YES;
+	}
+	
+	if (anObject == nil)
+	{
+		return NO;
+	}
+	
+	if (![anObject isKindOfClass:[self class]])
+	{
+		return NO;
+	}
+	
+    return [self internalIsEqualToByte:anObject];
+}
+
+- (BOOL)isEqualToByte:(JByte *)aByte
+{
+	if (aByte == self)
+	{
+		return YES;
+	}
+	
+	if (aByte == nil)
+	{
+		return NO;
+	}
+	
+    return [self internalIsEqualToByte:aByte];
+}
+
+- (BOOL)internalIsEqualToByte:(JByte *)aByte
+{
+	return _value == aByte->_value;
+}
+
+- (NSUInteger)hash
+{
+	NSUInteger hash = 881;
+	hash = 2003 * hash + _value;
+	return hash;
+}
+
 - (NSString *)description
 {
 	return [NSString stringWithFormat:@"%c", _value];

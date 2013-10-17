@@ -81,6 +81,53 @@
 	return _value;
 }
 
+- (BOOL)isEqual:(id)anObject
+{
+	if (anObject == self)
+	{
+		return YES;
+	}
+	
+	if (anObject == nil)
+	{
+		return NO;
+	}
+	
+	if (![anObject isKindOfClass:[self class]])
+	{
+		return NO;
+	}
+	
+    return [self internalIsEqualToShort:anObject];
+}
+
+- (BOOL)isEqualToShort:(JShort *)aShort
+{
+	if (aShort == self)
+	{
+		return YES;
+	}
+	
+	if (aShort == nil)
+	{
+		return NO;
+	}
+	
+    return [self internalIsEqualToShort:aShort];
+}
+
+- (BOOL)internalIsEqualToShort:(JShort *)aShort
+{
+	return _value == aShort->_value;
+}
+
+- (NSUInteger)hash
+{
+	NSUInteger hash = 821;
+	hash = 2053 * hash + _value;
+	return hash;
+}
+
 - (NSString *)description
 {
 	return [NSString stringWithFormat:@"%hd", _value];

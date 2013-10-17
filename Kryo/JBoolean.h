@@ -48,4 +48,8 @@
 - (float)floatValue;
 - (double)doubleValue;
 
+- (BOOL)isEqual:(id)anObject;
+- (BOOL)isEqualToBoolean:(JBoolean *)aBoolean;
+- (NSUInteger)hash;
+
 @end

@@ -51,6 +51,53 @@
 	return _value;
 }
 
+- (BOOL)isEqual:(id)anObject
+{
+	if (anObject == self)
+	{
+		return YES;
+	}
+	
+	if (anObject == nil)
+	{
+		return NO;
+	}
+	
+	if (![anObject isKindOfClass:[self class]])
+	{
+		return NO;
+	}
+	
+    return [self internalIsEqualToCharacter:anObject];
+}
+
+- (BOOL)isEqualToCharacter:(JCharacter *)aCharacter
+{
+	if (aCharacter == self)
+	{
+		return YES;
+	}
+	
+	if (aCharacter == nil)
+	{
+		return NO;
+	}
+	
+    return [self internalIsEqualToCharacter:aCharacter];
+}
+
+- (BOOL)internalIsEqualToCharacter:(JCharacter *)aCharacter
+{
+	return _value == aCharacter->_value;
+}
+
+- (NSUInteger)hash
+{
+	NSUInteger hash = 3067;
+	hash = 449 * hash + _value;
+	return hash;
+}
+
 - (id)copyWithZone:(NSZone *)zone
 {
 	return [JCharacter charWithValue:_value];

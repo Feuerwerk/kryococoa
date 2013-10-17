@@ -81,6 +81,54 @@
 	return _value;
 }
 
+- (BOOL)isEqual:(id)anObject
+{
+	if (anObject == self)
+	{
+		return YES;
+	}
+	
+	if (anObject == nil)
+	{
+		return NO;
+	}
+	
+	if (![anObject isKindOfClass:[self class]])
+	{
+		return NO;
+	}
+	
+    return [self internalIsEqualToFloat:anObject];
+}
+
+- (BOOL)isEqualToFloat:(JFloat *)aFloat
+{
+	if (aFloat == self)
+	{
+		return YES;
+	}
+	
+	if (aFloat == nil)
+	{
+		return NO;
+	}
+	
+    return [self internalIsEqualToFloat:aFloat];
+}
+
+- (BOOL)internalIsEqualToFloat:(JFloat *)aFloat
+{
+	return _value == aFloat->_value;
+}
+
+- (NSUInteger)hash
+{
+	NSUInteger hash = 3511;
+	UInt32 intValue = *(UInt32 *)&_value;
+	hash = 541 * hash + intValue;
+	return hash;
+}
+
 - (NSString *)description
 {
 	return [NSString stringWithFormat:@"%f", _value];

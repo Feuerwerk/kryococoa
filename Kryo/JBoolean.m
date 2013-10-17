@@ -104,6 +104,53 @@ static JBoolean *FALSE_VALUE;
 	return _value ? 1 : 0;
 }
 
+- (BOOL)isEqual:(id)anObject
+{
+	if (anObject == self)
+	{
+		return YES;
+	}
+	
+	if (anObject == nil)
+	{
+		return NO;
+	}
+
+	if (![anObject isKindOfClass:[self class]])
+	{
+		return NO;
+	}
+
+	return [self internalIsEqualToBoolean:anObject];
+}
+
+- (BOOL)isEqualToBoolean:(JBoolean *)aBoolean
+{
+	if (aBoolean == self)
+	{
+		return YES;
+	}
+	
+	if (aBoolean == nil)
+	{
+		return NO;
+	}
+	
+	return [self internalIsEqualToBoolean:aBoolean];
+}
+
+- (BOOL)internalIsEqualToBoolean:(JBoolean *)aBoolean
+{
+	return _value == aBoolean->_value;
+}
+
+- (NSUInteger)hash
+{
+	NSUInteger hash = 5;
+	hash = 31 * hash + (_value ? 2297 : 2843);
+	return hash;
+}
+
 - (id)copyWithZone:(NSZone *)zone
 {
 	return [JBoolean boolWithValue:_value];

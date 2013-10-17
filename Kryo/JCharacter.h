@@ -38,4 +38,8 @@
 
 - (unichar)charValue;
 
+- (BOOL)isEqual:(id)anObject;
+- (BOOL)isEqualToCharacter:(JCharacter *)aCharacter;
+- (NSUInteger)hash;
+
 @end

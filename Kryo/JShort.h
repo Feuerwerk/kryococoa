@@ -45,4 +45,8 @@
 - (float)floatValue;
 - (double)doubleValue;
 
+- (BOOL)isEqual:(id)anObject;
+- (BOOL)isEqualToShort:(JShort *)aShort;
+- (NSUInteger)hash;
+
 @end
