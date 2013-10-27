@@ -26,8 +26,10 @@
 // DAMAGE.
 // ======================================================================================
 
-#import <Foundation/Foundation.h>
+#ifndef __SERIALIZER_H
+#define __SERIALIZER_H
 
+#import <Foundation/Foundation.h>
 
 @class Kryo;
 @class KryoOutput;
@@ -51,3 +53,5 @@
 - (BOOL)isFinal:(Class)type;
 
 @end
+
+#endif // __SERIALIZER_H

@@ -26,6 +26,9 @@
 // DAMAGE.
 // ======================================================================================
 
+#ifndef __SERIALIZATION_ANNOTATION_H
+#define __SERIALIZATION_ANNOTATION_H
+
 #import <Foundation/Foundation.h>
 
 @protocol SerializationAnnotation <NSObject>
@@ -36,3 +39,5 @@
 + (BOOL)primitiveType;
 
 @end
+
+#endif // __SERIALIZATION_ANNOTATION_H
