@@ -15,6 +15,66 @@
 		AA36444E1765E26400C5D31C /* TaggedFieldSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA36444D1765E26400C5D31C /* TaggedFieldSerializer.m */; };
 		AA4C17711778B71A009F6BD0 /* EnumSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4C17701778B71A009F6BD0 /* EnumSerializer.m */; };
 		AA4C17781779ACC0009F6BD0 /* Enum.m in Sources */ = {isa = PBXBuildFile; fileRef = AA4C17771779ACC0009F6BD0 /* Enum.m */; };
+		AA643E72181D37800025B2EA /* ClassResolver.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EDD1A316E6604B005339C3 /* ClassResolver.h */; };
+		AA643E73181D37800025B2EA /* DefaultClassResolver.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EDD1A416E6604B005339C3 /* DefaultClassResolver.h */; };
+		AA643E74181D37800025B2EA /* Enum.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA4C17761779ACC0009F6BD0 /* Enum.h */; };
+		AA643E75181D37800025B2EA /* FinalAnnotation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAD34D8417E8597A005E7F34 /* FinalAnnotation.h */; };
+		AA643E76181D37800025B2EA /* JBoolean.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D390963216E79A8A0012B221 /* JBoolean.h */; };
+		AA643E77181D37800025B2EA /* JBooleanArray.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D390965D16E79D350012B221 /* JBooleanArray.h */; };
+		AA643E78181D37800025B2EA /* JByte.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D390963416E79A8A0012B221 /* JByte.h */; };
+		AA643E79181D37800025B2EA /* JCharacter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D390963616E79A8A0012B221 /* JCharacter.h */; };
+		AA643E7A181D37800025B2EA /* JCharacterArray.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D390966016E79D440012B221 /* JCharacterArray.h */; };
+		AA643E7B181D37800025B2EA /* JDouble.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D390963816E79A8A0012B221 /* JDouble.h */; };
+		AA643E7C181D37800025B2EA /* JDoubleArray.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D390963A16E79A8A0012B221 /* JDoubleArray.h */; };
+		AA643E7D181D37800025B2EA /* JFloat.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D390963C16E79A8A0012B221 /* JFloat.h */; };
+		AA643E7E181D37800025B2EA /* JFloatArray.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D390963E16E79A8A0012B221 /* JFloatArray.h */; };
+		AA643E7F181D37800025B2EA /* JInteger.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D390964016E79A8A0012B221 /* JInteger.h */; };
+		AA643E80181D37800025B2EA /* JIntegerArray.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D390964216E79A8A0012B221 /* JIntegerArray.h */; };
+		AA643E81181D37800025B2EA /* JLong.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D390964416E79A8A0012B221 /* JLong.h */; };
+		AA643E82181D37800025B2EA /* JLongArray.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D390964616E79A8A0012B221 /* JLongArray.h */; };
+		AA643E83181D37800025B2EA /* JNumeric.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D39ED1BE16E8A98F001AA271 /* JNumeric.h */; };
+		AA643E84181D37800025B2EA /* JObjectArray.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D390964816E79A8A0012B221 /* JObjectArray.h */; };
+		AA643E85181D37800025B2EA /* JShort.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D390964A16E79A8A0012B221 /* JShort.h */; };
+		AA643E86181D37800025B2EA /* JShortArray.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D390964C16E79A8A0012B221 /* JShortArray.h */; };
+		AA643E87181D37800025B2EA /* KryoException.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAE2A060170F229C00A09229 /* KryoException.h */; };
+		AA643E88181D37800025B2EA /* KryoInput.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EDD1A616E6604B005339C3 /* KryoInput.h */; };
+		AA643E89181D37800025B2EA /* KryoInputChunked.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA2082F3170EE093004521D7 /* KryoInputChunked.h */; };
+		AA643E8A181D37800025B2EA /* KryoOutput.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EDD1A816E6604B005339C3 /* KryoOutput.h */; };
+		AA643E8B181D37800025B2EA /* KryoOutputChunked.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA2082F6170EE0A1004521D7 /* KryoOutputChunked.h */; };
+		AA643E8C181D37800025B2EA /* ListReferenceResolver.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EDD1AA16E6604B005339C3 /* ListReferenceResolver.h */; };
+		AA643E8D181D37800025B2EA /* ObjectMap.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA2082F0170ECD5D004521D7 /* ObjectMap.h */; };
+		AA643E8E181D37800025B2EA /* ReferenceResolver.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EDD1AE16E6604B005339C3 /* ReferenceResolver.h */; };
+		AA643E8F181D37800025B2EA /* Registration.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EDD1AF16E6604B005339C3 /* Registration.h */; };
+		AA643E90181D37800025B2EA /* SerializationAnnotation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D308C60E16E76C4700FEBEE9 /* SerializationAnnotation.h */; };
+		AA643EAC181D37800025B2EA /* Serializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EDD1B116E6604B005339C3 /* Serializer.h */; };
+		AA643EAD181D37800025B2EA /* TagAnnotation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA36444F1765F5F800C5D31C /* TagAnnotation.h */; };
+		AA643ED5181D39400025B2EA /* ArraySerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EDD1DF16E66062005339C3 /* ArraySerializer.h */; };
+		AA643ED6181D39400025B2EA /* CompatibleFieldSerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA2082EA170EC5C6004521D7 /* CompatibleFieldSerializer.h */; };
+		AA643ED7181D39400025B2EA /* DataSerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EDD1E116E66062005339C3 /* DataSerializer.h */; };
+		AA643ED8181D39400025B2EA /* DateSerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EDD1E316E66062005339C3 /* DateSerializer.h */; };
+		AA643ED9181D39400025B2EA /* EnumSerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA4C176F1778B71A009F6BD0 /* EnumSerializer.h */; };
+		AA643EDA181D39400025B2EA /* Field.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA2082ED170ECBEE004521D7 /* Field.h */; };
+		AA643EDB181D39400025B2EA /* FieldSerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EDD1E516E66062005339C3 /* FieldSerializer.h */; };
+		AA643EDC181D39400025B2EA /* JBooleanArraySerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D390966616E79E440012B221 /* JBooleanArraySerializer.h */; };
+		AA643EDD181D39400025B2EA /* JBooleanSerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EDD1E716E66062005339C3 /* JBooleanSerializer.h */; };
+		AA643EDE181D39400025B2EA /* JByteSerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EDD1E916E66062005339C3 /* JByteSerializer.h */; };
+		AA643EDF181D39400025B2EA /* JCharacterArraySerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D390966316E79E350012B221 /* JCharacterArraySerializer.h */; };
+		AA643EE0181D39400025B2EA /* JCharacterSerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D308C61216E7969100FEBEE9 /* JCharacterSerializer.h */; };
+		AA643EE1181D39400025B2EA /* JDoubleArraySerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EDD1EB16E66062005339C3 /* JDoubleArraySerializer.h */; };
+		AA643EE2181D39400025B2EA /* JDoubleSerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EDD1ED16E66062005339C3 /* JDoubleSerializer.h */; };
+		AA643EE3181D39400025B2EA /* JFloatArraySerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EDD1EF16E66062005339C3 /* JFloatArraySerializer.h */; };
+		AA643EE4181D39400025B2EA /* JFloatSerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EDD1F116E66062005339C3 /* JFloatSerializer.h */; };
+		AA643EE5181D39400025B2EA /* JIntegerArraySerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EDD1F316E66062005339C3 /* JIntegerArraySerializer.h */; };
+		AA643EE6181D39400025B2EA /* JIntegerSerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EDD1F516E66062005339C3 /* JIntegerSerializer.h */; };
+		AA643EE7181D39400025B2EA /* JLongArraySerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EDD1F716E66062005339C3 /* JLongArraySerializer.h */; };
+		AA643EE8181D39400025B2EA /* JLongSerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EDD1F916E66062005339C3 /* JLongSerializer.h */; };
+		AA643EE9181D39400025B2EA /* JObjectArraySerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EDD1FB16E66062005339C3 /* JObjectArraySerializer.h */; };
+		AA643EEA181D39400025B2EA /* JShortArraySerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EDD1FD16E66062005339C3 /* JShortArraySerializer.h */; };
+		AA643EEB181D39400025B2EA /* JShortSerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EDD1FF16E66062005339C3 /* JShortSerializer.h */; };
+		AA643EEC181D39400025B2EA /* MapSerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = AAC7B98C17147A9B0045EF72 /* MapSerializer.h */; };
+		AA643EED181D39400025B2EA /* SetSerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA6F20A517A288030087C3AC /* SetSerializer.h */; };
+		AA643EEE181D39400025B2EA /* StringSerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D3EDD20116E66062005339C3 /* StringSerializer.h */; };
+		AA643EEF181D39400025B2EA /* TaggedFieldSerializer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = AA36444C1765E26400C5D31C /* TaggedFieldSerializer.h */; };
 		AA6F20A717A288030087C3AC /* SetSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6F20A617A288030087C3AC /* SetSerializer.m */; };
 		AAC7B98E17147A9B0045EF72 /* MapSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC7B98D17147A9B0045EF72 /* MapSerializer.m */; };
 		AAE2A062170F229C00A09229 /* KryoException.m in Sources */ = {isa = PBXBuildFile; fileRef = AAE2A061170F229C00A09229 /* KryoException.m */; };
@@ -67,12 +127,81 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		AA643ED4181D392B0025B2EA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}/Serializer";
+			dstSubfolderSpec = 16;
+			files = (
+				AA643ED5181D39400025B2EA /* ArraySerializer.h in CopyFiles */,
+				AA643ED6181D39400025B2EA /* CompatibleFieldSerializer.h in CopyFiles */,
+				AA643ED7181D39400025B2EA /* DataSerializer.h in CopyFiles */,
+				AA643ED8181D39400025B2EA /* DateSerializer.h in CopyFiles */,
+				AA643ED9181D39400025B2EA /* EnumSerializer.h in CopyFiles */,
+				AA643EDA181D39400025B2EA /* Field.h in CopyFiles */,
+				AA643EDB181D39400025B2EA /* FieldSerializer.h in CopyFiles */,
+				AA643EDC181D39400025B2EA /* JBooleanArraySerializer.h in CopyFiles */,
+				AA643EDD181D39400025B2EA /* JBooleanSerializer.h in CopyFiles */,
+				AA643EDE181D39400025B2EA /* JByteSerializer.h in CopyFiles */,
+				AA643EDF181D39400025B2EA /* JCharacterArraySerializer.h in CopyFiles */,
+				AA643EE0181D39400025B2EA /* JCharacterSerializer.h in CopyFiles */,
+				AA643EE1181D39400025B2EA /* JDoubleArraySerializer.h in CopyFiles */,
+				AA643EE2181D39400025B2EA /* JDoubleSerializer.h in CopyFiles */,
+				AA643EE3181D39400025B2EA /* JFloatArraySerializer.h in CopyFiles */,
+				AA643EE4181D39400025B2EA /* JFloatSerializer.h in CopyFiles */,
+				AA643EE5181D39400025B2EA /* JIntegerArraySerializer.h in CopyFiles */,
+				AA643EE6181D39400025B2EA /* JIntegerSerializer.h in CopyFiles */,
+				AA643EE7181D39400025B2EA /* JLongArraySerializer.h in CopyFiles */,
+				AA643EE8181D39400025B2EA /* JLongSerializer.h in CopyFiles */,
+				AA643EE9181D39400025B2EA /* JObjectArraySerializer.h in CopyFiles */,
+				AA643EEA181D39400025B2EA /* JShortArraySerializer.h in CopyFiles */,
+				AA643EEB181D39400025B2EA /* JShortSerializer.h in CopyFiles */,
+				AA643EEC181D39400025B2EA /* MapSerializer.h in CopyFiles */,
+				AA643EED181D39400025B2EA /* SetSerializer.h in CopyFiles */,
+				AA643EEE181D39400025B2EA /* StringSerializer.h in CopyFiles */,
+				AA643EEF181D39400025B2EA /* TaggedFieldSerializer.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3EDD18D16E65FD8005339C3 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				AA643E72181D37800025B2EA /* ClassResolver.h in CopyFiles */,
+				AA643E73181D37800025B2EA /* DefaultClassResolver.h in CopyFiles */,
+				AA643E74181D37800025B2EA /* Enum.h in CopyFiles */,
+				AA643E75181D37800025B2EA /* FinalAnnotation.h in CopyFiles */,
+				AA643E76181D37800025B2EA /* JBoolean.h in CopyFiles */,
+				AA643E77181D37800025B2EA /* JBooleanArray.h in CopyFiles */,
+				AA643E78181D37800025B2EA /* JByte.h in CopyFiles */,
+				AA643E79181D37800025B2EA /* JCharacter.h in CopyFiles */,
+				AA643E7A181D37800025B2EA /* JCharacterArray.h in CopyFiles */,
+				AA643E7B181D37800025B2EA /* JDouble.h in CopyFiles */,
+				AA643E7C181D37800025B2EA /* JDoubleArray.h in CopyFiles */,
+				AA643E7D181D37800025B2EA /* JFloat.h in CopyFiles */,
+				AA643E7E181D37800025B2EA /* JFloatArray.h in CopyFiles */,
+				AA643E7F181D37800025B2EA /* JInteger.h in CopyFiles */,
+				AA643E80181D37800025B2EA /* JIntegerArray.h in CopyFiles */,
+				AA643E81181D37800025B2EA /* JLong.h in CopyFiles */,
+				AA643E82181D37800025B2EA /* JLongArray.h in CopyFiles */,
+				AA643E83181D37800025B2EA /* JNumeric.h in CopyFiles */,
+				AA643E84181D37800025B2EA /* JObjectArray.h in CopyFiles */,
+				AA643E85181D37800025B2EA /* JShort.h in CopyFiles */,
+				AA643E86181D37800025B2EA /* JShortArray.h in CopyFiles */,
+				AA643E87181D37800025B2EA /* KryoException.h in CopyFiles */,
+				AA643E88181D37800025B2EA /* KryoInput.h in CopyFiles */,
+				AA643E89181D37800025B2EA /* KryoInputChunked.h in CopyFiles */,
+				AA643E8A181D37800025B2EA /* KryoOutput.h in CopyFiles */,
+				AA643E8B181D37800025B2EA /* KryoOutputChunked.h in CopyFiles */,
+				AA643E8C181D37800025B2EA /* ListReferenceResolver.h in CopyFiles */,
+				AA643E8D181D37800025B2EA /* ObjectMap.h in CopyFiles */,
+				AA643E8E181D37800025B2EA /* ReferenceResolver.h in CopyFiles */,
+				AA643E8F181D37800025B2EA /* Registration.h in CopyFiles */,
+				AA643E90181D37800025B2EA /* SerializationAnnotation.h in CopyFiles */,
+				AA643EAC181D37800025B2EA /* Serializer.h in CopyFiles */,
+				AA643EAD181D37800025B2EA /* TagAnnotation.h in CopyFiles */,
 				D3EDD19816E65FD8005339C3 /* Kryo.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,6 +525,7 @@
 				D3EDD18B16E65FD8005339C3 /* Sources */,
 				D3EDD18C16E65FD8005339C3 /* Frameworks */,
 				D3EDD18D16E65FD8005339C3 /* CopyFiles */,
+				AA643ED4181D392B0025B2EA /* CopyFiles */,
 			);
 			buildRules = (
 			);
