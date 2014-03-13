@@ -137,7 +137,7 @@ const int NAME = -1;
 
 	if (registration == nil)
 	{
-		[NSException raise:@"unregistered" format:@"Encountered unregistered class ID: %ld", classID - 2];
+		[NSException raise:@"unregistered" format:@"Encountered unregistered class ID: %i", (int)classID - 2];
 	}
 
 	_memoizedClassId = classID;

@@ -110,7 +110,7 @@
 
 - (void)write:(Kryo *)kryo value:(id)value to:(KryoOutput *)output
 {
-	[output writeInt:_fields.count optimizePositive:YES];
+	[output writeInt:(SInt32)_fields.count optimizePositive:YES];
 	
 	for (NSUInteger i = 0, fieldCount = _fields.count; i < fieldCount; i++)
 	{

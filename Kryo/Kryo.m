@@ -243,7 +243,7 @@ BOOL acceptsNull(id<Serializer> serializer)
 	
 	registration.type = type;
 	registration.serializer = serializer;
-	registration.ident = ident;
+	registration.ident = (SInt32)ident;
 	
 	[_classResolver addRegistration:registration];
 	

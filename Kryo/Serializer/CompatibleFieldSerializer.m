@@ -43,7 +43,7 @@
 	if (![context containsKey:self])
 	{
 		[context setObject:self forKey:self];
-		[output writeInt:fieldCount optimizePositive:YES];
+		[output writeInt:(SInt32)fieldCount optimizePositive:YES];
 
 		for (NSUInteger i = 0; i < fieldCount; i++)
 		{

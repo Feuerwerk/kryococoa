@@ -130,7 +130,7 @@
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"%ld", _value];
+	return [NSString stringWithFormat:@"%d", (int)_value];
 }
 
 - (NSString *)debugDescription

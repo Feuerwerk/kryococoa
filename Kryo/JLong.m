@@ -63,7 +63,7 @@
 
 - (SInt32)intValue
 {
-	return _value;
+	return (SInt32)_value;
 }
 
 - (SInt64)longValue

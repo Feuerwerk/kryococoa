@@ -44,7 +44,7 @@
 {
 	NSSet *set = value;
 
-	[output writeInt:set.count optimizePositive:YES];
+	[output writeInt:(SInt32)set.count optimizePositive:YES];
 	
 	id<Serializer> serializer = self.serializer;
 	

@@ -44,12 +44,12 @@
 	return self;
 }
 
-- (void) reset
+- (void)reset
 {
 	[_seenObjects removeAllObjects];
 }
 
-- (BOOL) useReferences:(Class)type
+- (BOOL)useReferences:(Class)type
 {
 	if (class_conformsToProtocol(type, @protocol(SerializationAnnotation)))
 	{
@@ -62,22 +62,29 @@
 	return YES;
 }
 
-- (int) nextReadId:(Class)type
+- (int)nextReadId:(Class)type
 {
 	return (int)_seenObjects.count;
 }
 
-- (id) getReadObject:(Class)type forKey:(int)key
+- (id)getReadObject:(Class)type forKey:(int)key
 {
 	if (key < _seenObjects.count)
 	{
-		return [_seenObjects objectAtIndex:key];
+		id obj = [_seenObjects objectAtIndex:key];
+		
+		if (obj == [NSNull null])
+		{
+			return nil;
+		}
+		
+		return obj;
 	}
 
 	return nil;
 }
 
-- (void) addReadObject:(id)obj forKey:(int)key
+- (void)addReadObject:(id)obj forKey:(int)key
 {
 	if (key == _seenObjects.count)
 	{
@@ -87,14 +94,14 @@
 	{
 		while (key >= _seenObjects.count)
 		{
-			[_seenObjects addObject:nil];
+			[_seenObjects addObject:[NSNull null]];
 		}
 
 		[_seenObjects replaceObjectAtIndex:key withObject:obj];
 	}
 }
 
-- (int) getWrittenId:(id)obj
+- (int)getWrittenId:(id)obj
 {
 	for (int i = 0, objCount = (int)_seenObjects.count; i < objCount; i++)
 	{
@@ -107,7 +114,7 @@
 	return -1;
 }
 
-- (int) addWrittenObject:(id)obj
+- (int)addWrittenObject:(id)obj
 {
 	int key = (int)_seenObjects.count;
 	[_seenObjects addObject:obj];
