@@ -32,6 +32,7 @@
 #import "ClassResolver.h"
 #import "DefaultClassResolver.h"
 #import "ObjectMap.h"
+#import "JIntegerArray.h"
 #import "Serializer/JBooleanSerializer.h"
 #import "Serializer/JByteSerializer.h"
 #import "Serializer/JCharacterSerializer.h"
@@ -40,6 +41,14 @@
 #import "Serializer/JLongSerializer.h"
 #import "Serializer/JFloatSerializer.h"
 #import "Serializer/JDoubleSerializer.h"
+#import "Serializer/JBooleanArraySerializer.h"
+#import "Serializer/JCharacterArraySerializer.h"
+#import "Serializer/JShortArraySerializer.h"
+#import "Serializer/JIntegerArraySerializer.h"
+#import "Serializer/JLongArraySerializer.h"
+#import "Serializer/JFloatArraySerializer.h"
+#import "Serializer/JDoubleArraySerializer.h"
+#import "Serializer/JObjectArraySerializer.h"
 #import "Serializer/FieldSerializer.h"
 #import "Serializer/DateSerializer.h"
 #import "Serializer/StringSerializer.h"
@@ -126,7 +135,15 @@ BOOL acceptsNull(id<Serializer> serializer)
 		[self registerClass:[JShort class] usingSerializer:[JShortSerializer new]];
 		[self registerClass:[JLong class] usingSerializer:[JLongSerializer new]];
 		[self registerClass:[JDouble class] usingSerializer:[JDoubleSerializer new]];
-
+		
+		//[self registerClass:[JBooleanArray class] usingSerializer:[JBooleanArraySerializer new]];
+		//[self registerClass:[JCharacterArray class] usingSerializer:[JCharacterArraySerializer new]];
+		//[self registerClass:[JShortArray class] usingSerializer:[JShortArraySerializer new]];
+		[self registerClass:[JIntegerArray class] usingSerializer:[JIntegerArraySerializer new]];
+		//[self registerClass:[JLongArray class] usingSerializer:[JLongArraySerializer new]];
+		//[self registerClass:[JFloatArray class] usingSerializer:[JFloatArraySerializer new]];
+		//[self registerClass:[JDoubleArray class] usingSerializer:[JDoubleArraySerializer new]];
+		
 		// Default-Serializer
 		[self registerDefaultSerializer:[MapSerializer new] forClass:[NSDictionary class]];
 		[self registerDefaultSerializer:[ArraySerializer new] forClass:[NSArray class]];

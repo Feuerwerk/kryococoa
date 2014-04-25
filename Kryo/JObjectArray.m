@@ -113,4 +113,9 @@
 	return _array.debugDescription;
 }
 
++ (NSString *)serializingAlias
+{
+	return @"[Ljava.lang.Object;";
+}
+
 @end

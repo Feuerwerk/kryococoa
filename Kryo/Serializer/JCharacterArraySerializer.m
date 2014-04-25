@@ -75,4 +75,9 @@
 	return newArray;
 }
 
+- (BOOL)isFinal:(Class)type
+{
+	return YES;
+}
+
 @end

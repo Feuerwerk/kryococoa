@@ -51,6 +51,14 @@ const int NAME = -1;
 		_classToRegistration = [NSMutableDictionary new];
 		_idToRegistration = [NSMutableDictionary new];
 		_nextNameId = 0;
+		
+		Registration *newRegistration = [Registration new];
+		
+		newRegistration.type = [NSObject class];
+		newRegistration.serializer = nil;
+		newRegistration.ident = NAME;
+		
+		[self addRegistration:newRegistration];
 	}
 	
 	return self;

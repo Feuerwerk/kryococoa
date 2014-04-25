@@ -497,6 +497,13 @@ static Field *newField(NSString *propertyName, const char *encodedTypeName, NSUI
 			}
 			
 			Class propertyType = NSClassFromString(typeName);
+			
+			if (propertyType == nil)
+			{
+				NSLog(@"Unable to get class for typename %@", typeName);
+				return nil;
+			}
+			
 			ObjectField *newField = [ObjectField new];
 			SEL genericsResolver = NSSelectorFromString([propertyName stringByAppendingString:@"Generics"]);
 			
