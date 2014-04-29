@@ -103,6 +103,11 @@
 	return [_array objectAtIndex:index];
 }
 
+- (NSArray *)array
+{
+	return [NSArray arrayWithArray:_array];
+}
+
 + (Class)defaultSerializer
 {
 	return [JObjectArraySerializer class];
