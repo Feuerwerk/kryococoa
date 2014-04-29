@@ -44,5 +44,6 @@
 - (void)addObject:(id)object;
 - (id)objectAtIndex:(NSUInteger)index;
 - (NSArray *)array;
+- (NSUInteger)indexOf:(id)object;
 
 @end

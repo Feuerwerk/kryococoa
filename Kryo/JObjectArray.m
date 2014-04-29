@@ -108,6 +108,11 @@
 	return [NSArray arrayWithArray:_array];
 }
 
+- (NSUInteger)indexOf:(id)object
+{
+	return [_array indexOfObject:object];
+}
+
 + (Class)defaultSerializer
 {
 	return [JObjectArraySerializer class];
