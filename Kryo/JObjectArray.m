@@ -108,7 +108,7 @@
 	return [NSArray arrayWithArray:_array];
 }
 
-- (NSUInteger)indexOf:(id)object
+- (NSUInteger)indexOfObject:(id)object
 {
 	return [_array indexOfObject:object];
 }
