@@ -30,6 +30,13 @@
 
 @implementation JObjectArray
 
++ (instancetype)arrayWithArray:(NSArray *)array
+{
+	JObjectArray *newArray = [[JObjectArray alloc] initWithCapacity:array.count];
+	[newArray->_array addObjectsFromArray:array];
+	return newArray;
+}
+
 + (instancetype)arrayWithObject:(id)object
 {
 	JObjectArray *newArray = [[JObjectArray alloc] initWithCapacity:1];
