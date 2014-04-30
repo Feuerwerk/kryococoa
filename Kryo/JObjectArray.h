@@ -36,6 +36,7 @@
 + (instancetype)arrayWithObject:(id)object;
 + (instancetype)arrayWithObjects:(id)firstObject, ... NS_REQUIRES_NIL_TERMINATION;
 + (instancetype)arrayWithCapacity:(NSUInteger)length;
++ (instancetype)arrayWithArray:(NSArray *)array;
 
 - (id)init;
 - (id)initWithCapacity:(NSUInteger)length;
