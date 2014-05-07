@@ -115,6 +115,11 @@
 	return [NSArray arrayWithArray:_array];
 }
 
+- (NSMutableArray *)mutableArray
+{
+	return [NSMutableArray arrayWithArray:_array];
+}
+
 - (NSUInteger)indexOfObject:(id)object
 {
 	return [_array indexOfObject:object];
