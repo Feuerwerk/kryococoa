@@ -413,11 +413,11 @@ static void invokeSetter(id object, SEL selector, void *value)
 		// The concrete type of the field is unknown, write the class first.
 		if (propertyValue == nil)
 		{
-			[kryo writeClass:nil to:output];
+			[kryo writeClass:nil ofObject:nil to:output];
 			return;
 		}
 
-		Registration *registration = [kryo writeClass:[propertyValue class] to:output];
+		Registration *registration = [kryo writeClass:[propertyValue class] ofObject:nil to:output];
 
 		if (serializer == nil)
 		{

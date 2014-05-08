@@ -44,6 +44,6 @@
 - (Registration *)registerImplicit:(Class)type;
 
 - (Registration *)readClass:(KryoInput *)input;
-- (Registration *)writeClass:(Class)type to:(KryoOutput *)output;
+- (Registration *)writeClass:(Class)type ofObject:(id)obj to:(KryoOutput *)output;
 
 @end

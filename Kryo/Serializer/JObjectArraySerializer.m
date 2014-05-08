@@ -65,8 +65,8 @@
 	}
 	
 	length--;
-	JObjectArray *items = [JObjectArray arrayWithCapacity:length];
-	
+	JObjectArray *items = [[clazz alloc] initWithCapacity:length];
+
 	[kryo reference:items];
 	
 	for (int i = 0; i < length; i++)
@@ -82,6 +82,17 @@
 	}
 	
 	return items;
+}
+
+- (NSString *)getClassName:(Class)type ofObject:(id)obj kryo:(Kryo *)kryo
+{
+	if (obj == nil)
+	{
+		return nil; // default handling
+	}
+
+	JObjectArray *items = obj;
+	return [NSString stringWithFormat:@"[L%@;", [kryo stringFromClass:items.componentType]];
 }
 
 @end

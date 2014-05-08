@@ -108,7 +108,7 @@ extern const int NO_REF;
 - (void)writeNullableObject:(id)obj withClass:(Class)type to:(KryoOutput *)output;
 - (void)writeNullableObject:(id)obj to:(KryoOutput *)output usingSerializer:(id<Serializer>)serializer;
 - (void)writeClassAndObject:(id)obj to:(KryoOutput *)output;
-- (Registration *)writeClass:(Class)type to:(KryoOutput *)output;
+- (Registration *) writeClass:(Class)type ofObject:(id)obj to:(KryoOutput *)output;
 
 - (id)readObject:(KryoInput *)input ofClass:(Class)type;
 - (id)readObject:(KryoInput *)input ofClass:(Class)type usingSerializer:(id<Serializer>)serializer;

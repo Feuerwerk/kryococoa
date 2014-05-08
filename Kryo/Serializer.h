@@ -50,6 +50,7 @@
 - (BOOL)acceptsNull;
 - (void)setGenerics:(NSArray *)generics kryo:(Kryo *)kryo;
 - (NSString *)getClassName:(Class)type;
+- (NSString *)getClassName:(Class)type ofObject:(id)obj kryo:(Kryo *)kryo;
 - (BOOL)isFinal:(Class)type;
 
 @end

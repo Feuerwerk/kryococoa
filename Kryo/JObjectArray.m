@@ -32,16 +32,12 @@
 
 + (instancetype)arrayWithArray:(NSArray *)array
 {
-	JObjectArray *newArray = [[JObjectArray alloc] initWithCapacity:array.count];
-	[newArray->_array addObjectsFromArray:array];
-	return newArray;
+	return [JObjectArray arrayOfType:nil withArray:array];
 }
 
 + (instancetype)arrayWithObject:(id)object
 {
-	JObjectArray *newArray = [[JObjectArray alloc] initWithCapacity:1];
-	[newArray addObject:object];
-	return newArray;
+	return [JObjectArray arrayOfType:nil withObject:object];
 }
 
 + (instancetype)arrayWithObjects:(id)firstObject, ... NS_REQUIRES_NIL_TERMINATION
@@ -68,30 +64,89 @@
 
 + (instancetype) arrayWithCapacity:(NSUInteger)length
 {
-	return [[JObjectArray alloc] initWithCapacity:length];
+	return [JObjectArray arrayOfType:nil withCapacity:length];
+}
+
++ (instancetype)arrayOfType:(Class)type withObject:(id)object
+{
+	JObjectArray *newArray = [[JObjectArray alloc] initWithType:type andCapacity:1];
+	[newArray addObject:object];
+	return newArray;
+}
+
++ (instancetype)arrayOfType:(Class)type withObjects:(id)firstObject, ... NS_REQUIRES_NIL_TERMINATION
+{
+	va_list args;
+	va_start(args, firstObject);
+
+	JObjectArray *newArray = [[JObjectArray alloc] initWithType:type andCapacity:16];
+	[newArray addObject:firstObject];
+
+	// Über nachfolgende Blöcke iterieren
+	id nextObject = va_arg(args, id);
+
+	while (nextObject != nil)
+	{
+		[newArray addObject:nextObject];
+		nextObject = va_arg(args, id);
+	}
+
+	va_end(args);
+
+	return newArray;
+}
+
++ (instancetype)arrayOfType:(Class)type withCapacity:(NSUInteger)length
+{
+	return [[JObjectArray alloc] initWithType:type andCapacity:length];
+}
+
++ (instancetype)arrayOfType:(Class)type withArray:(NSArray *)array
+{
+	JObjectArray *newArray = [[JObjectArray alloc] initWithType:type andCapacity:array.count];
+	[newArray->_array addObjectsFromArray:array];
+	return newArray;
 }
 
 - (id)init
 {
-	self = [super init];
-	
-	if (self != nil)
-	{
-		_array = [NSMutableArray new];
-	}
-
-	return self;
+	return [self initWithType:nil];
 }
 
 - (id)initWithCapacity:(NSUInteger)length
 {
+	return [self initWithType:nil andCapacity:length];
+}
+
+- (id)initWithType:(Class)type
+{
+	return [self initWithType:type andCapacity:NSIntegerMax];
+}
+
+- (id)initWithType:(Class)type andCapacity:(NSUInteger)length
+{
 	self = [super init];
-	
+
 	if (self != nil)
 	{
-		_array = [NSMutableArray arrayWithCapacity:length];
+		_array = (length == NSIntegerMax) ? [NSMutableArray new] : [NSMutableArray arrayWithCapacity:length];
+		Class defaultComponentType = [self defaultComponentType];
+
+		if (type != nil)
+		{
+			if ((defaultComponentType != nil) && (defaultComponentType != type))
+			{
+				[NSException raise:NSInvalidArgumentException format:@"Array has fixed component type %@.", NSStringFromClass(defaultComponentType)];
+			}
+
+			_componentType = type;
+		}
+		else
+		{
+			_componentType = (defaultComponentType != nil) ? defaultComponentType : [NSObject class];
+		}
 	}
-	
+
 	return self;
 }
 
@@ -125,6 +180,11 @@
 	return [_array indexOfObject:object];
 }
 
+- (Class)componentType
+{
+	return _componentType;
+}
+
 + (Class)defaultSerializer
 {
 	return [JObjectArraySerializer class];
@@ -135,9 +195,9 @@
 	return _array.debugDescription;
 }
 
-+ (NSString *)serializingAlias
+- (Class)defaultComponentType
 {
-	return @"[Ljava.lang.Object;";
+	return nil;
 }
 
 @end

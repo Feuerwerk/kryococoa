@@ -62,6 +62,8 @@
 #import "SerializationAnnotation.h"
 #import "FinalAnnotation.h"
 #import <objc/runtime.h>
+#import <Stasis/CTObjectiveCRuntimeAdditions.h>
+#import <Stasis/StasisAsyncServiceWrapper.h>
 
 @interface DefaultSerializerEntry : NSObject
 
@@ -95,6 +97,9 @@
 
 const int REF = -1;
 const int NO_REF = -2;
+NSString * const kArrayPrefix = @"[L";
+NSString * const kArraySuffix = @";";
+NSString * const kObjectArrayPrefix = @"_JObjectArray$";
 
 BOOL acceptsNull(id<Serializer> serializer)
 {
@@ -158,7 +163,8 @@ BOOL acceptsNull(id<Serializer> serializer)
 		[self registerAlias:@"java.util.HashSet" forClass:[NSSet class]];
 		[self registerAlias:@"java.util.ArrayList" forClass:[NSArray class]];
 		[self registerAlias:@"java.util.Date" forClass:[NSDate class]];
-		
+		[self registerAlias:@"java.lang.Object" forClass:[NSObject class]];
+
 		// Resolve Aliases
 		Class *classes = NULL;
 		int numClasses = objc_getClassList(NULL, 0);
@@ -466,11 +472,11 @@ BOOL acceptsNull(id<Serializer> serializer)
 	{
 		if (obj == nil)
 		{
-			[self writeClass:nil to:output];
+			[self writeClass:nil ofObject:nil to:output];
 			return;
 		}
 
-		Registration *registration = [self writeClass:[obj class] to:output];
+		Registration *registration = [self writeClass:[obj class] ofObject:obj to:output];
 		
 		if ((_referenceResolver != nil) && [self writeReferenceOrNull:obj to:output mayBeNull:NO])
 		{
@@ -488,7 +494,7 @@ BOOL acceptsNull(id<Serializer> serializer)
 	}
 }
 
-- (Registration *) writeClass:(Class)type to:(KryoOutput *)output
+- (Registration *) writeClass:(Class)type ofObject:(id)obj to:(KryoOutput *)output
 {
 	if (output == nil)
 	{
@@ -497,7 +503,7 @@ BOOL acceptsNull(id<Serializer> serializer)
 
 	@try
 	{
-		return [_classResolver writeClass:type to:output];
+		return [_classResolver writeClass:type ofObject:obj to:output];
 	}
 	@finally
 	{
@@ -817,6 +823,37 @@ BOOL acceptsNull(id<Serializer> serializer)
 	
 	if (type == nil)
 	{
+		// Test className for Java ObjectArray
+		if ([className compare:kArrayPrefix options:0 range:NSMakeRange(0, kArrayPrefix.length)] == NSOrderedSame)
+		{
+			if ([className compare:kArraySuffix options:0 range:NSMakeRange(className.length - kArraySuffix.length, kArraySuffix.length)] == NSOrderedSame)
+			{
+				NSString *componentName = [className substringWithRange:NSMakeRange(kArrayPrefix.length, className.length - kArrayPrefix.length - kArraySuffix.length)];
+				NSString *arrayClassName = [kObjectArrayPrefix stringByAppendingString:componentName];
+				Class arrayType = NSClassFromString(arrayClassName);
+
+				if (arrayType == nil)
+				{
+					// Create subclass of JObjectArray and fill in componentType
+					Class componentType = [self classFromString:componentName];
+					Class originalType = [JObjectArray class];
+
+					id defaultComponentTypeBlock = ^() {
+						return componentType;
+					};
+					IMP defaultComponentTypeImpl = imp_implementationWithBlock(defaultComponentTypeBlock);
+					Method method = class_getInstanceMethod(originalType, @selector(defaultComponentType));
+					const char *types = method_getTypeEncoding(method);
+
+					arrayType = objc_allocateClassPair(originalType, [arrayClassName UTF8String], 0);
+					class_addMethod(arrayType, @selector(defaultComponentType), defaultComponentTypeImpl, types);
+					objc_registerClassPair(arrayType);
+				}
+
+				return arrayType;
+			}
+		}
+
 		type = NSClassFromString(className);
 	}
 	
@@ -909,11 +946,14 @@ BOOL acceptsNull(id<Serializer> serializer)
 	{
 		[NSException raise:NSInvalidArgumentException format:@"type cannot be nil."];
 	}
-	
-	/*
-	if (type.isAnnotationPresent(DefaultSerializer.class))
-		return newSerializer(((DefaultSerializer)type.getAnnotation(DefaultSerializer.class)).value(), type);
-	*/
+
+	if ([type conformsToProtocol:@protocol(SerializationAnnotation)])
+	{
+		if ([type respondsToSelector:@selector(defaultSerializer)])
+		{
+			return [self newSerializer:[type defaultSerializer] forType:type];
+		}
+	}
 
 	for (NSUInteger i = 0, serializerCount = _defaultSerializers.count; i < serializerCount; i++)
 	{

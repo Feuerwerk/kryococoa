@@ -33,7 +33,7 @@
 @interface DefaultClassResolver ()
 
 - (Registration *)readName:(KryoInput *)input;
-- (void)writeName:(Registration *)registration withClass:(Class)type to:(KryoOutput *)output;
+- (void)writeName:(Registration *)registration withClass:(Class)type ofObject:(id)obj to:(KryoOutput *)output;
 
 @end
 
@@ -154,7 +154,7 @@ const int NAME = -1;
 	return registration;
 }
 
-- (Registration *)writeClass:(Class)type to:(KryoOutput *)output
+- (Registration *)writeClass:(Class)type ofObject:(id)obj to:(KryoOutput *)output
 {
 	if (type == nil)
 	{
@@ -166,7 +166,7 @@ const int NAME = -1;
 
 	if (registration.ident == NAME)
 	{
-		[self writeName:registration withClass:type to:output];
+		[self writeName:registration withClass:type ofObject:obj to:output];
 	}
 	else
 	{
@@ -221,14 +221,18 @@ const int NAME = -1;
 	return [_kryo getRegistration:type];
 }
 
-- (void)writeName:(Registration *)registration withClass:(Class)type to:(KryoOutput *)output
+- (void)writeName:(Registration *)registration withClass:(Class)type ofObject:(id)obj to:(KryoOutput *)output
 {
 	[output writeByte:NAME + 2];
 	
 	NSNumber *nameId;
 	NSString *typeName = nil;
-	
-	if ([registration.serializer respondsToSelector:@selector(getClassName:)])
+
+	if ([registration.serializer respondsToSelector:@selector(getClassName:ofObject:kryo:)])
+	{
+		typeName = [registration.serializer getClassName:type ofObject:obj kryo:_kryo];
+	}
+	else if ([registration.serializer respondsToSelector:@selector(getClassName:)])
 	{
 		typeName = [registration.serializer getClassName:type];
 	}
