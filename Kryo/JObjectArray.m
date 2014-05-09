@@ -165,6 +165,11 @@
 	return [_array objectAtIndex:index];
 }
 
+- (id)objectAtIndexedSubscript:(NSUInteger)index
+{
+	return [_array objectAtIndex:index];
+}
+
 - (NSArray *)array
 {
 	return [NSArray arrayWithArray:_array];

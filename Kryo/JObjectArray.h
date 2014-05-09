@@ -52,6 +52,7 @@
 - (NSUInteger)count;
 - (void)addObject:(id)object;
 - (id)objectAtIndex:(NSUInteger)index;
+- (id)objectAtIndexedSubscript:(NSUInteger)index;
 - (NSArray *)array;
 - (NSMutableArray *)mutableArray;
 - (NSUInteger)indexOfObject:(id)object;
