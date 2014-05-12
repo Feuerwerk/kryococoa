@@ -185,6 +185,11 @@
 	return [_array indexOfObject:object];
 }
 
+- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id __unsafe_unretained [])buffer count:(NSUInteger)len
+{
+	return [_array countByEnumeratingWithState:state objects:buffer count:len];
+}
+
 - (Class)componentType
 {
 	return _componentType;

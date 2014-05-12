@@ -28,7 +28,7 @@
 #import <Foundation/Foundation.h>
 #import "SerializationAnnotation.h"
 
-@interface JObjectArray : NSObject<SerializationAnnotation>
+@interface JObjectArray : NSObject<SerializationAnnotation, NSFastEnumeration>
 {
 	NSMutableArray *_array;
 	Class _componentType;
@@ -53,6 +53,7 @@
 - (void)addObject:(id)object;
 - (id)objectAtIndex:(NSUInteger)index;
 - (id)objectAtIndexedSubscript:(NSUInteger)index;
+- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id __unsafe_unretained [])buffer count:(NSUInteger)len;
 - (NSArray *)array;
 - (NSMutableArray *)mutableArray;
 - (NSUInteger)indexOfObject:(id)object;
