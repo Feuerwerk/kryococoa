@@ -31,7 +31,19 @@
 
 @implementation ArraySerializer
 
-- (BOOL) acceptsNull
+- (id)init
+{
+	self = [super init];
+
+	if (self != nil)
+	{
+		_elementsCanBeNull = YES;
+	}
+
+	return self;
+}
+
+- (BOOL)acceptsNull
 {
 	return NO;
 }
@@ -40,41 +52,72 @@
 {
 	NSArray *items = value;
 	int itemCount = (int)items.count;
+	id<Serializer> valueSerializer = self.valueSerializer;
 
 	[output writeInt:itemCount optimizePositive:YES];
 
-	for (int i = 0; i < itemCount; i++)
+	if (_valueGenericType != nil)
 	{
-		[kryo writeClassAndObject:[items objectAtIndex:i] to:output];
+		if (valueSerializer == nil)
+		{
+			valueSerializer = [kryo getSerializer:_valueGenericType];
+		}
+
+		_valueGenericType = nil;
+	}
+
+	if (valueSerializer != nil)
+	{
+		if (_elementsCanBeNull)
+		{
+			for (NSUInteger i = 0; i < itemCount; i++)
+			{
+				[kryo writeNullableObject:items[i] to:output usingSerializer:valueSerializer];
+			}
+		}
+		else
+		{
+			for (NSUInteger i = 0; i < itemCount; i++)
+			{
+				[kryo writeObject:items[i] to:output usingSerializer:valueSerializer];
+			}
+		}
+	}
+	else
+	{
+		for (NSUInteger i = 0; i < itemCount; i++)
+		{
+			[kryo writeClassAndObject:items[i] to:output];
+		}
 	}
 }
 
 - (void)setGenerics:(NSArray *)generics kryo:(Kryo *)kryo
 {
 	Class newValueGenericType = [generics objectAtIndex:0];
-	
+
 	if ([kryo isFinal:newValueGenericType])
 	{
 		_valueGenericType = newValueGenericType;
 	}
 }
 
-- (id) read:(Kryo *)kryo withClass:(Class)clazz from:(KryoInput *)input
+- (id)read:(Kryo *)kryo withClass:(Class)clazz from:(KryoInput *)input
 {
-	SInt32 length = [input readIntOptimizePositive:YES];
+	NSUInteger length = (NSUInteger)[input readIntOptimizePositive:YES];
 	NSMutableArray *items = [NSMutableArray arrayWithCapacity:length];
-    Class valueClass = self.valueClass;
+	Class valueClass = self.valueClass;
 	id<Serializer> valueSerializer = self.valueSerializer;
-	
+
 	if (_valueGenericType != nil)
 	{
 		valueClass = _valueGenericType;
-        
+
 		if (valueSerializer == nil)
 		{
 			valueSerializer = [kryo getSerializer:valueClass];
 		}
-        
+
 		_valueGenericType = nil;
 	}
 
@@ -82,11 +125,11 @@
 
 	for (int i = 0; i < length; i++)
 	{
-        id value;
-        
+		id value;
+
 		if (valueSerializer != nil)
 		{
-			if (_valuesCanBeNull)
+			if (_elementsCanBeNull)
 			{
 				value = [kryo readNullableObject:input ofClass:valueClass usingSerializer:valueSerializer];
 			}
@@ -99,12 +142,12 @@
 		{
 			value = [kryo readClassAndObject:input];
 		}
-        
-        if (value == nil)
+
+		if (value == nil)
 		{
 			value = [NSNull null];
 		}
-		
+
 		[items addObject:value];
 	}
 

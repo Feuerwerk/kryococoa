@@ -36,6 +36,6 @@
 
 @property (nonatomic, strong) Class valueClass;
 @property (nonatomic, strong) id<Serializer> valueSerializer;
-@property (nonatomic, assign) BOOL valuesCanBeNull;
+@property (nonatomic, assign) BOOL elementsCanBeNull;
 
 @end

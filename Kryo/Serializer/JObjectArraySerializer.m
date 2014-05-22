@@ -31,9 +31,26 @@
 
 @implementation JObjectArraySerializer
 
-- (BOOL)acceptsNull
+id wrapNull(id obj)
 {
-	return YES;
+	if (obj == nil)
+	{
+		return [NSNull null];
+	}
+
+	return obj;
+}
+
+- (id)init
+{
+	self = [super init];
+
+	if (self != nil)
+	{
+		_elementsCanBeNull = YES;
+	}
+
+	return self;
 }
 
 - (void)write:(Kryo *)kryo value:(id)value to:(KryoOutput *)output
@@ -43,44 +60,85 @@
 		[output writeByte:IS_NULL];
 		return;
 	}
-	
+
 	JObjectArray *items = value;
 	int itemCount = (int)items.count;
-	
+
 	[output writeInt:itemCount + 1 optimizePositive:YES];
-	
-	for (int i = 0; i < itemCount; i++)
+
+	Class elementClass = items.componentType;
+
+	if ([kryo isFinal:elementClass])
 	{
-		[kryo writeClassAndObject:[items objectAtIndex:i] to:output];
+		id<Serializer> elementSerializer = [kryo getSerializer:elementClass];
+
+		for (NSUInteger i = 0; i < itemCount; i++)
+		{
+			if (_elementsCanBeNull)
+			{
+				[kryo writeNullableObject:items[i] to:output usingSerializer:elementSerializer];
+			}
+			else
+			{
+				[kryo writeObject:items[i] to:output usingSerializer:elementSerializer];
+			}
+		}
+	}
+	else
+	{
+		for (NSUInteger i = 0; i < itemCount; i++)
+		{
+			[kryo writeClassAndObject:items[i] to:output];
+		}
 	}
 }
 
-- (id) read:(Kryo *)kryo withClass:(Class)clazz from:(KryoInput *)input
+- (id)read:(Kryo *)kryo withClass:(Class)clazz from:(KryoInput *)input
 {
-	SInt32 length = [input readIntOptimizePositive:YES];
-	
+	NSUInteger length = (NSUInteger)[input readIntOptimizePositive:YES];
+
 	if (length == IS_NULL)
 	{
 		return nil;
 	}
-	
+
 	length--;
 	JObjectArray *items = [[clazz alloc] initWithCapacity:length];
 
 	[kryo reference:items];
-	
-	for (int i = 0; i < length; i++)
+
+
+	Class elementClass = items.componentType;
+
+	if ([kryo isFinal:elementClass])
 	{
-		id item = [kryo readClassAndObject:input];
-		
-		if (item == nil)
+		id<Serializer> elementSerializer = [kryo getSerializer:elementClass];
+
+		for (NSUInteger i = 0; i < length; i++)
 		{
-			item = [NSNull null];
+			id item;
+
+			if (_elementsCanBeNull)
+			{
+				item = [kryo readNullableObject:input ofClass:elementClass usingSerializer:elementSerializer];
+			}
+			else
+			{
+				item = [kryo readObject:input ofClass:elementClass usingSerializer:elementSerializer];
+			}
+
+			[items addObject:wrapNull(item)];
 		}
-		
-		[items addObject:item];
 	}
-	
+	else
+	{
+		for (NSUInteger i = 0; i < length; i++)
+		{
+			id item = [kryo readClassAndObject:input];
+			[items addObject:wrapNull(item)];
+		}
+	}
+
 	return items;
 }
 

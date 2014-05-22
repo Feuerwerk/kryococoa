@@ -30,5 +30,8 @@
 #import "../Serializer.h"
 
 @interface JObjectArraySerializer : NSObject<Serializer>
+{
+	BOOL _elementsCanBeNull;
+}
 
 @end
