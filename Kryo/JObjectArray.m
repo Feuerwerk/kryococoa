@@ -27,17 +27,23 @@
 
 #import "JObjectArray.h"
 #import "Serializer/JObjectArraySerializer.h"
+#import "Kryo.h"
+#import <objc/runtime.h>
 
 @implementation JObjectArray
 
 + (instancetype)arrayWithArray:(NSArray *)array
 {
-	return [JObjectArray arrayOfType:nil withArray:array];
+	JObjectArray *newArray = [[JObjectArray alloc] initWithCapacity:array.count];
+	[newArray->_array addObjectsFromArray:array];
+	return newArray;
 }
 
 + (instancetype)arrayWithObject:(id)object
 {
-	return [JObjectArray arrayOfType:nil withObject:object];
+	JObjectArray *newArray = [[JObjectArray alloc] initWithCapacity:1];
+	[newArray addObject:object];
+	return newArray;
 }
 
 + (instancetype)arrayWithObjects:(id)firstObject, ... NS_REQUIRES_NIL_TERMINATION
@@ -62,14 +68,21 @@
 	return newArray;
 }
 
-+ (instancetype) arrayWithCapacity:(NSUInteger)length
++ (instancetype)arrayWithCapacity:(NSUInteger)length
 {
-	return [JObjectArray arrayOfType:nil withCapacity:length];
+	return [[JObjectArray alloc] initWithCapacity:length];
+}
+
++ (instancetype)arrayOfType:(Class)type
+{
+	Class arrayType = [Kryo resolveArrayType:type];
+	return [[arrayType alloc] init];
 }
 
 + (instancetype)arrayOfType:(Class)type withObject:(id)object
 {
-	JObjectArray *newArray = [[JObjectArray alloc] initWithType:type andCapacity:1];
+	Class arrayType = [Kryo resolveArrayType:type];
+	JObjectArray *newArray = [[arrayType alloc] initWithCapacity:1];
 	[newArray addObject:object];
 	return newArray;
 }
@@ -79,7 +92,8 @@
 	va_list args;
 	va_start(args, firstObject);
 
-	JObjectArray *newArray = [[JObjectArray alloc] initWithType:type andCapacity:16];
+	Class arrayType = [Kryo resolveArrayType:type];
+	JObjectArray *newArray = [[arrayType alloc] initWithCapacity:16];
 	[newArray addObject:firstObject];
 
 	// Über nachfolgende Blöcke iterieren
@@ -98,53 +112,30 @@
 
 + (instancetype)arrayOfType:(Class)type withCapacity:(NSUInteger)length
 {
-	return [[JObjectArray alloc] initWithType:type andCapacity:length];
+	Class arrayType = [Kryo resolveArrayType:type];
+	return [[arrayType alloc] initWithCapacity:length];
 }
 
 + (instancetype)arrayOfType:(Class)type withArray:(NSArray *)array
 {
-	JObjectArray *newArray = [[JObjectArray alloc] initWithType:type andCapacity:array.count];
+	Class arrayType = [Kryo resolveArrayType:type];
+	JObjectArray *newArray = [[arrayType alloc] initWithCapacity:array.count];
 	[newArray->_array addObjectsFromArray:array];
 	return newArray;
 }
 
 - (id)init
 {
-	return [self initWithType:nil];
+	return [self initWithCapacity:NSIntegerMax];
 }
 
 - (id)initWithCapacity:(NSUInteger)length
-{
-	return [self initWithType:nil andCapacity:length];
-}
-
-- (id)initWithType:(Class)type
-{
-	return [self initWithType:type andCapacity:NSIntegerMax];
-}
-
-- (id)initWithType:(Class)type andCapacity:(NSUInteger)length
 {
 	self = [super init];
 
 	if (self != nil)
 	{
 		_array = (length == NSIntegerMax) ? [NSMutableArray new] : [NSMutableArray arrayWithCapacity:length];
-		Class defaultComponentType = [self defaultComponentType];
-
-		if (type != nil)
-		{
-			if ((defaultComponentType != nil) && (defaultComponentType != type))
-			{
-				[NSException raise:NSInvalidArgumentException format:@"Array has fixed component type %@.", NSStringFromClass(defaultComponentType)];
-			}
-
-			_componentType = type;
-		}
-		else
-		{
-			_componentType = (defaultComponentType != nil) ? defaultComponentType : [NSObject class];
-		}
 	}
 
 	return self;
@@ -192,7 +183,7 @@
 
 - (Class)componentType
 {
-	return _componentType;
+	return [NSObject class];
 }
 
 + (Class)defaultSerializer
@@ -203,11 +194,6 @@
 - (NSString *)debugDescription
 {
 	return _array.debugDescription;
-}
-
-- (Class)defaultComponentType
-{
-	return nil;
 }
 
 @end

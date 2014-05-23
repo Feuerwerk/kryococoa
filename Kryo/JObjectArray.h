@@ -31,7 +31,6 @@
 @interface JObjectArray : NSObject<SerializationAnnotation, NSFastEnumeration>
 {
 	NSMutableArray *_array;
-	Class _componentType;
 }
 
 + (instancetype)arrayWithObject:(id)object;
@@ -39,15 +38,14 @@
 + (instancetype)arrayWithCapacity:(NSUInteger)length;
 + (instancetype)arrayWithArray:(NSArray *)array;
 
++ (instancetype)arrayOfType:(Class)type;
 + (instancetype)arrayOfType:(Class)type withObject:(id)object;
 + (instancetype)arrayOfType:(Class)type withObjects:(id)firstObject, ... NS_REQUIRES_NIL_TERMINATION;
 + (instancetype)arrayOfType:(Class)type withCapacity:(NSUInteger)length;
 + (instancetype)arrayOfType:(Class)type withArray:(NSArray *)array;
 
 - (id)init;
-- (id)initWithType:(Class)type;
 - (id)initWithCapacity:(NSUInteger)length;
-- (id)initWithType:(Class)type andCapacity:(NSUInteger)length;
 
 - (NSUInteger)count;
 - (void)addObject:(id)object;
@@ -58,7 +56,5 @@
 - (NSMutableArray *)mutableArray;
 - (NSUInteger)indexOfObject:(id)object;
 - (Class)componentType;
-
-- (Class)defaultComponentType;
 
 @end

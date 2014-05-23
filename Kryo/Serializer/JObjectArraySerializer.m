@@ -107,7 +107,6 @@ id wrapNull(id obj)
 
 	[kryo reference:items];
 
-
 	Class elementClass = items.componentType;
 
 	if ([kryo isFinal:elementClass])

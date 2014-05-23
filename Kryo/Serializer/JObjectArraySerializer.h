@@ -32,6 +32,7 @@
 @interface JObjectArraySerializer : NSObject<Serializer>
 {
 	BOOL _elementsCanBeNull;
+	Class _elementType;
 }
 
 @end

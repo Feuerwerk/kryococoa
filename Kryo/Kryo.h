@@ -117,4 +117,6 @@ extern const int NO_REF;
 - (id)readClassAndObject:(KryoInput *)input;
 - (Registration *)readClass:(KryoInput *)input;
 
++ (Class)resolveArrayType:(Class)type;
+
 @end

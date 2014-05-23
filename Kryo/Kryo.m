@@ -89,6 +89,7 @@
 - (id<Serializer>)newDefaultSerializer:(Class)type;
 - (id<Serializer>)newSerializer:(Class)serializerClass forType:(Class)type;
 - (SInt32)nextRegistrationId;
++ (Class)createArrayType:(Class)type withClassName:(NSString *)arrayClassName;
 
 @end
 
@@ -836,18 +837,7 @@ BOOL acceptsNull(id<Serializer> serializer)
 				{
 					// Create subclass of JObjectArray and fill in componentType
 					Class componentType = [self classFromString:componentName];
-					Class originalType = [JObjectArray class];
-
-					id defaultComponentTypeBlock = ^() {
-						return componentType;
-					};
-					IMP defaultComponentTypeImpl = imp_implementationWithBlock(defaultComponentTypeBlock);
-					Method method = class_getInstanceMethod(originalType, @selector(defaultComponentType));
-					const char *types = method_getTypeEncoding(method);
-
-					arrayType = objc_allocateClassPair(originalType, [arrayClassName UTF8String], 0);
-					class_addMethod(arrayType, @selector(defaultComponentType), defaultComponentTypeImpl, types);
-					objc_registerClassPair(arrayType);
+					arrayType = [Kryo createArrayType:componentType withClassName:arrayClassName];
 				}
 
 				return arrayType;
@@ -1135,6 +1125,38 @@ BOOL acceptsNull(id<Serializer> serializer)
 
 		ident++;
 	}
+}
+
++ (Class)resolveArrayType:(Class)type
+{
+	NSString *componentClassName = NSStringFromClass(type);
+	NSString *arrayClassName = [kObjectArrayPrefix stringByAppendingString:componentClassName];
+	Class arrayType = NSClassFromString(arrayClassName);
+
+	if (arrayType == nil)
+	{
+		// Create subclass of JObjectArray and fill in componentType
+		arrayType = [Kryo createArrayType:type withClassName:arrayClassName];
+	}
+
+	return arrayType;
+}
+
++ (Class)createArrayType:(Class)type withClassName:(NSString *)arrayClassName
+{
+	Class originalType = [JObjectArray class];
+
+	id componentTypeBlock = ^() {
+		return type;
+	};
+	IMP componentTypeImpl = imp_implementationWithBlock(componentTypeBlock);
+	Method method = class_getInstanceMethod(originalType, @selector(componentType));
+	const char *types = method_getTypeEncoding(method);
+
+	Class arrayType = objc_allocateClassPair(originalType, [arrayClassName UTF8String], 0);
+	class_addMethod(arrayType, @selector(componentType), componentTypeImpl, types);
+	objc_registerClassPair(arrayType);
+	return arrayType;
 }
 
 @end

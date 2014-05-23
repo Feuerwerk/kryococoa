@@ -417,14 +417,14 @@ static void invokeSetter(id object, SEL selector, void *value)
 			return;
 		}
 
-		Registration *registration = [kryo writeClass:[propertyValue class] ofObject:nil to:output];
+		Registration *registration = [kryo writeClass:[propertyValue class] ofObject:propertyValue to:output];
 
 		if (serializer == nil)
 		{
 			serializer = registration.serializer;
 		}
 		
-		if (_generics != nil)
+		if (_generics != nil && [_generics respondsToSelector:@selector(setGenerics:kryo:)])
 		{
 			[serializer setGenerics:_generics kryo:kryo];
 		}
