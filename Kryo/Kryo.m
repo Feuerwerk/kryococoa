@@ -62,8 +62,6 @@
 #import "SerializationAnnotation.h"
 #import "FinalAnnotation.h"
 #import <objc/runtime.h>
-#import <Stasis/CTObjectiveCRuntimeAdditions.h>
-#import <Stasis/StasisAsyncServiceWrapper.h>
 
 @interface DefaultSerializerEntry : NSObject
 
