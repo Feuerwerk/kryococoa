@@ -478,6 +478,16 @@ static void invokeSetter(id object, SEL selector, void *value)
 
 @implementation FieldSerializer
 
+static NSArray *getIgnoredProperties()
+{
+	static NSArray *ignoredProperties = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		ignoredProperties = [NSArray arrayWithObjects:@"superclass", @"hash", nil];
+	});
+	return ignoredProperties;
+}
+
 static Field *newField(NSString *propertyName, const char *encodedTypeName, NSUInteger length, Class type, Kryo *kryo)
 {
 	switch (encodedTypeName[0])
@@ -535,7 +545,8 @@ static Field *newField(NSString *propertyName, const char *encodedTypeName, NSUI
 		case 'i':
 		case 'l':
 			return [IntegerField new];
-			
+
+		case 'Q':
 		case 'q':
 			return [LongField new];
 			
@@ -586,6 +597,7 @@ static void resolvePropertyFields(Class type, NSMutableArray *fields, Kryo *kryo
 	// then the properties declared in the current class
 	unsigned int outCount;
 	objc_property_t *properties = class_copyPropertyList(type, &outCount);
+	NSArray *ignoredProperties = getIgnoredProperties();
 	
 	@try
 	{
@@ -600,6 +612,12 @@ static void resolvePropertyFields(Class type, NSMutableArray *fields, Kryo *kryo
 			}
 			
 			NSString *propertyName = [NSString stringWithCString:nameBytes encoding:NSASCIIStringEncoding];
+
+			if ([ignoredProperties containsObject:propertyName])
+			{
+				continue;
+			}
+			
 			Field *newField = fieldFromProperty(propertyName, propertyEntry, type, kryo);
 			NSString *setterName = [NSString stringWithFormat:@"set%@%@:", [[propertyName substringToIndex:1] uppercaseString], [propertyName substringFromIndex:1]];
 			SEL getter = NSSelectorFromString(propertyName);
@@ -620,7 +638,6 @@ static void resolvePropertyFields(Class type, NSMutableArray *fields, Kryo *kryo
 			newField.setter = setter;
 			
 			[fields addObject:newField];
-			
 		}
 	}
 	@finally
