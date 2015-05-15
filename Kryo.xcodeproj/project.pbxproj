@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA10AB091B065042005C1A8E /* LocaleSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA10AB081B065042005C1A8E /* LocaleSerializer.m */; };
 		AA2082EC170EC5C6004521D7 /* CompatibleFieldSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2082EB170EC5C6004521D7 /* CompatibleFieldSerializer.m */; };
 		AA2082EF170ECC52004521D7 /* Field.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2082EE170ECC52004521D7 /* Field.m */; };
 		AA2082F2170ECD5D004521D7 /* ObjectMap.m in Sources */ = {isa = PBXBuildFile; fileRef = AA2082F1170ECD5D004521D7 /* ObjectMap.m */; };
@@ -209,6 +210,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AA10AB071B065042005C1A8E /* LocaleSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocaleSerializer.h; path = Serializer/LocaleSerializer.h; sourceTree = "<group>"; };
+		AA10AB081B065042005C1A8E /* LocaleSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocaleSerializer.m; path = Serializer/LocaleSerializer.m; sourceTree = "<group>"; };
 		AA2082EA170EC5C6004521D7 /* CompatibleFieldSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CompatibleFieldSerializer.h; path = Serializer/CompatibleFieldSerializer.h; sourceTree = "<group>"; };
 		AA2082EB170EC5C6004521D7 /* CompatibleFieldSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CompatibleFieldSerializer.m; path = Serializer/CompatibleFieldSerializer.m; sourceTree = "<group>"; };
 		AA2082ED170ECBEE004521D7 /* Field.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Field.h; path = Serializer/Field.h; sourceTree = "<group>"; };
@@ -503,6 +506,8 @@
 				D3EDD1FE16E66062005339C3 /* JShortArraySerializer.m */,
 				D3EDD1FF16E66062005339C3 /* JShortSerializer.h */,
 				D3EDD20016E66062005339C3 /* JShortSerializer.m */,
+				AA10AB071B065042005C1A8E /* LocaleSerializer.h */,
+				AA10AB081B065042005C1A8E /* LocaleSerializer.m */,
 				AAC7B98C17147A9B0045EF72 /* MapSerializer.h */,
 				AAC7B98D17147A9B0045EF72 /* MapSerializer.m */,
 				AA6F20A517A288030087C3AC /* SetSerializer.h */,
@@ -590,6 +595,7 @@
 				D3EDD21116E66062005339C3 /* JObjectArraySerializer.m in Sources */,
 				D3EDD21216E66062005339C3 /* JShortArraySerializer.m in Sources */,
 				D3EDD21316E66062005339C3 /* JShortSerializer.m in Sources */,
+				AA10AB091B065042005C1A8E /* LocaleSerializer.m in Sources */,
 				D3EDD21416E66062005339C3 /* StringSerializer.m in Sources */,
 				D308C61416E7969100FEBEE9 /* JCharacterSerializer.m in Sources */,
 				D390964E16E79A8A0012B221 /* JBoolean.m in Sources */,
@@ -687,8 +693,7 @@
 				DSTROOT = /tmp/Kryo.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Kryo/Kryo-Prefix.pch";
-				OTHER_LDFLAGS = (
-				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
@@ -700,8 +705,7 @@
 				DSTROOT = /tmp/Kryo.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Kryo/Kryo-Prefix.pch";
-				OTHER_LDFLAGS = (
-				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};

@@ -57,6 +57,7 @@
 #import "Serializer/ArraySerializer.h"
 #import "Serializer/DataSerializer.h"
 #import "Serializer/EnumSerializer.h"
+#import "Serializer/LocaleSerializer.h"
 #import "Registration.h"
 #import "Enum.h"
 #import "SerializationAnnotation.h"
@@ -155,6 +156,7 @@ BOOL acceptsNull(id<Serializer> serializer)
 		[self registerDefaultSerializer:[DataSerializer new] forClass:[NSData class]];
 		[self registerDefaultSerializer:[StringSerializer new] forClass:[NSString class]];
 		[self registerDefaultSerializerClass:[EnumSerializer class] forClass:[Enum class]];
+		[self registerDefaultSerializerClass:[LocaleSerializer class] forClass:[NSLocale class]];
 		
 		// Default Aliases
 		[self registerAlias:@"java.util.TreeMap" forClass:[NSDictionary class]];
