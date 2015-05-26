@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Kryo/Serializer.h"
+#import "../Serializer.h"
 
 @interface LocaleSerializer : NSObject<Serializer>
 
