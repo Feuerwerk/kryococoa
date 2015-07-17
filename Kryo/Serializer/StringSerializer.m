@@ -41,7 +41,7 @@
 	[output writeString:value];
 }
 
-- (id) read:(Kryo *)kryo withClass:(Class)clazz from:(KryoInput *)input
+- (id)read:(Kryo *)kryo withClass:(Class)clazz from:(KryoInput *)input
 {
 	return [input readString];
 }

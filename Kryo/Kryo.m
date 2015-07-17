@@ -33,6 +33,7 @@
 #import "DefaultClassResolver.h"
 #import "ObjectMap.h"
 #import "JIntegerArray.h"
+#import "JIntegerArray.h"
 #import "Serializer/JBooleanSerializer.h"
 #import "Serializer/JByteSerializer.h"
 #import "Serializer/JCharacterSerializer.h"
@@ -58,6 +59,7 @@
 #import "Serializer/DataSerializer.h"
 #import "Serializer/EnumSerializer.h"
 #import "Serializer/LocaleSerializer.h"
+#import "Serializer/StringBuilderSerializer.h"
 #import "Registration.h"
 #import "Enum.h"
 #import "SerializationAnnotation.h"
@@ -155,6 +157,7 @@ BOOL acceptsNull(id<Serializer> serializer)
 		[self registerDefaultSerializer:[DateSerializer new] forClass:[NSDate class]];
 		[self registerDefaultSerializer:[DataSerializer new] forClass:[NSData class]];
 		[self registerDefaultSerializer:[StringSerializer new] forClass:[NSString class]];
+		[self registerDefaultSerializer:[StringBuilderSerializer new] forClass:[NSMutableString class]];
 		[self registerDefaultSerializerClass:[EnumSerializer class] forClass:[Enum class]];
 		[self registerDefaultSerializerClass:[LocaleSerializer class] forClass:[NSLocale class]];
 		
@@ -405,7 +408,7 @@ BOOL acceptsNull(id<Serializer> serializer)
 	}
 }
 
-- (void) writeNullableObject:(id)obj to:(KryoOutput *)output usingSerializer:(id<Serializer>)serializer
+- (void)writeNullableObject:(id)obj to:(KryoOutput *)output usingSerializer:(id<Serializer>)serializer
 {
 	if (output == nil)
 	{
@@ -455,7 +458,7 @@ BOOL acceptsNull(id<Serializer> serializer)
 	}
 }
 
-- (void) writeClassAndObject:(id)obj to:(KryoOutput *)output
+- (void)writeClassAndObject:(id)obj to:(KryoOutput *)output
 {
 	if (output == nil)
 	{
@@ -495,7 +498,7 @@ BOOL acceptsNull(id<Serializer> serializer)
 	}
 }
 
-- (Registration *) writeClass:(Class)type ofObject:(id)obj to:(KryoOutput *)output
+- (Registration *)writeClass:(Class)type ofObject:(id)obj to:(KryoOutput *)output
 {
 	if (output == nil)
 	{
@@ -567,7 +570,7 @@ BOOL acceptsNull(id<Serializer> serializer)
 	}
 }
 
-- (id) readObject:(KryoInput *)input ofClass:(Class)type usingSerializer:(id<Serializer>)serializer
+- (id)readObject:(KryoInput *)input ofClass:(Class)type usingSerializer:(id<Serializer>)serializer
 {
 	if (input == nil)
 	{
@@ -680,7 +683,7 @@ BOOL acceptsNull(id<Serializer> serializer)
 	}
 }
 
-- (id) readNullableObject:(KryoInput *)input ofClass:(Class)type usingSerializer:(id<Serializer>)serializer
+- (id)readNullableObject:(KryoInput *)input ofClass:(Class)type usingSerializer:(id<Serializer>)serializer
 {
 	if (input == nil)
 	{
@@ -740,7 +743,7 @@ BOOL acceptsNull(id<Serializer> serializer)
 	}
 }
 
-- (id) readClassAndObject:(KryoInput *)input
+- (id)readClassAndObject:(KryoInput *)input
 {
 	if (input == nil)
 	{
@@ -793,7 +796,7 @@ BOOL acceptsNull(id<Serializer> serializer)
 	}
 }
 
-- (Registration *) readClass:(KryoInput *)input
+- (Registration *)readClass:(KryoInput *)input
 {
 	if (input == nil)
 	{
@@ -918,7 +921,7 @@ BOOL acceptsNull(id<Serializer> serializer)
 	return registration;
 }
 
-- (id<Serializer>) getSerializer:(Class)type
+- (id<Serializer>)getSerializer:(Class)type
 {
 	Registration *registration = [self getRegistration:type];
 	
@@ -930,7 +933,7 @@ BOOL acceptsNull(id<Serializer> serializer)
 	return registration.serializer;
 }
 
-- (id<Serializer>) getDefaultSerializer:(Class)type
+- (id<Serializer>)getDefaultSerializer:(Class)type
 {
 	if (type == nil)
 	{
@@ -963,12 +966,12 @@ BOOL acceptsNull(id<Serializer> serializer)
 	return [self newDefaultSerializer:type];
 }
 
-- (id<Serializer>) newDefaultSerializer:(Class)type
+- (id<Serializer>)newDefaultSerializer:(Class)type
 {
 	return [self newSerializer:_defaultSerializer forType:type];
 }
 
-- (id<Serializer>) newSerializer:(Class)serializerClass forType:(Class)type
+- (id<Serializer>)newSerializer:(Class)serializerClass forType:(Class)type
 {
 	NSObject<Serializer> *serializer = [serializerClass alloc];
 	

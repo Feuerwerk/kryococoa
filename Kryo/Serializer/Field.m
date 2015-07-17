@@ -51,4 +51,14 @@
 	return [_name compare:other.name];
 }
 
+- (NSString *)description
+{
+	return _name;
+}
+
+- (NSString *)debugDescription
+{
+	return [NSString stringWithFormat:@"Field(name = %@, tag = %d)", _name, _tag];
+}
+
 @end

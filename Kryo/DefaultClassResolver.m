@@ -69,7 +69,7 @@ const int NAME = -1;
 	_kryo = kryo;
 }
 
-- (void) reset
+- (void)reset
 {
 	if (_classToNameId != nil)
 	{

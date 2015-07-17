@@ -462,6 +462,16 @@ static void invokeSetter(id object, SEL selector, void *value)
 	}
 }
 
+- (NSString *)description
+{
+	return self.name;
+}
+
+- (NSString *)debugDescription
+{
+	return [NSString stringWithFormat:@"ObjectField(name = %@, tag = %d)", self.name, self.tag];
+}
+
 @end
 
 /////////////////////////////////////////////////////////////////////////////////

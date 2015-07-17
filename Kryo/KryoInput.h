@@ -72,6 +72,7 @@
 - (double)readDoubleWithPrecision:(double)precision optimizePositive:(BOOL)optimizePositive;
 - (bool)readBoolean;
 - (NSString *)readString;
+- (NSMutableString *)readMutableString;
 - (unichar)readChar;
 
 /* protected */

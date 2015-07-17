@@ -482,6 +482,52 @@
 	}
 }
 
+- (NSMutableString *)readMutableString
+{
+	NSUInteger available = [self require:1];
+	uint8_t b = _buffer[_position++];
+	
+	if ((b & 0x80) == 0)
+	{
+		return [self readMutableAscii]; // ASCII.
+	}
+	
+	// Null, empty, or UTF8.
+	NSUInteger charCount = (available >= 5) ? [self readUtf8Length:b] : [self readUtf8LengthSlow:b];
+	
+	switch (charCount)
+	{
+		case 0:
+			return nil;
+			
+		case 1:
+			return [NSMutableString stringWithString:@""];
+	}
+	
+	charCount--;
+	
+	// Reserve memory for char buffer
+	unichar *chars = malloc((charCount + 1) * sizeof(unichar));
+	
+	@try
+	{
+		[self readUtf8:charCount intoBuffer:chars];
+		chars[charCount] = 0;
+		
+		NSMutableString *string = [[NSMutableString alloc] initWithCharactersNoCopy:chars length:charCount freeWhenDone:YES];
+		chars = NULL;
+		
+		return string;
+	}
+	@finally
+	{
+		if (chars != NULL)
+		{
+			free(chars);
+		}
+	}
+}
+
 - (unichar)readChar
 {
 	[self require:2];
@@ -581,6 +627,31 @@
 	return value;
 }
 
+- (NSMutableString *)readMutableAscii
+{
+	NSUInteger end = _position;
+	NSUInteger start = end - 1;
+	uint8_t b;
+	
+	do
+	{
+		if (end == _limit)
+		{
+			return [self readMutableAsciiSlow];
+		}
+		
+		b = _buffer[end++];
+	}
+	while ((b & 0x80) == 0);
+	
+	_buffer[end - 1] &= 0x7F; // Mask end of ascii bit.
+	NSMutableString *value = [[NSMutableString alloc] initWithBytes:_buffer + start length:end - start encoding:NSASCIIStringEncoding];
+	_buffer[end - 1] |= 0x80;
+	_position = end;
+	
+	return value;
+}
+
 - (NSString *)readAsciiSlow
 {
 	_position--; // Re-read the first byte.
@@ -619,6 +690,46 @@
 
 	return [[NSString alloc] initWithCharactersNoCopy:chars length:charCount freeWhenDone:YES];
 }
+
+- (NSMutableString *)readMutableAsciiSlow
+{
+	_position--; // Re-read the first byte.
+	// Copy chars currently in buffer.
+	NSUInteger charCount = _limit - _position;
+	NSUInteger charSize = MAX(charCount * 2, 32);
+	unichar *chars = malloc(charSize * sizeof(unichar));
+	
+	for (NSUInteger i = _position, j = 0; i < _limit; ++i, ++j)
+	{
+		chars[j] = _buffer[i];
+	}
+	
+	_position = _limit;
+	
+	// Copy additional chars one by one.
+	while (true)
+	{
+		[self require:1];
+		uint8_t b = _buffer[_position++];
+		
+		if (charCount == charSize)
+		{
+			charSize = charCount * 2;
+			chars = realloc(chars, charSize);
+		}
+		
+		if ((b & 0x80) == 0x80)
+		{
+			chars[charCount++] = b & 0x7F;
+			break;
+		}
+		
+		chars[charCount++] = b;
+	}
+	
+	return [[NSMutableString alloc] initWithCharactersNoCopy:chars length:charCount freeWhenDone:YES];
+}
+
 
 - (void)readUtf8:(NSUInteger)length intoBuffer:(unichar *)chars
 {
