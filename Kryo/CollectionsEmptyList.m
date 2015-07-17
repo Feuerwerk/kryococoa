@@ -161,6 +161,11 @@
 
 - (NSArray *)subarrayWithRange:(NSRange)range
 {
+	if (range.length == 0)
+	{
+		return self;
+	}
+	
 	[NSException raise:NSRangeException format:@"Parameter range not in range"];
 	return nil;
 }
