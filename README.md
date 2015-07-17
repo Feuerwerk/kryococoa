@@ -97,36 +97,38 @@ and generics you must provide these meta informations in another way.
 The following Java-Types are directly supported by *KryoCocoa*.
 
 | Java                | Objective-C           |
-| ------------------- | --------------------- |
-| bool                | bool (not *BOOL*, because *bool* is a builtin type which can be determined by reflection whereas *BOOL* is just a typedef to *char*) |
-| byte                | char                  |
-| short               | SInt16                |
-| int                 | SInt32                |
-| long                | SInt64                |
-| float               | float                 |
-| double              | double                |
-| char                | unichar               |
-| bool[]              | JBooleanArray         |
-| byte[]              | NSData                |
-| short[]             | JShortArray           |
-| int[]               | JIntegerArray         |
-| long[]              | JLongArray            |
-| float[]             | JFloatArray           |
-| double[]            | JDoubleArray          |
-| char[]              | JCharacterArray       |
-| Object[]            | NSArray               |
-| java.lang.Boolean   | JBoolean              |
-| java.lang.Byte      | JByte                 |
-| java.lang.Short     | JShort                |
-| java.lang.Integer   | JInteger              |
-| java.lang.Long      | JLong                 |
-| java.lang.Float     | JFloat                |
-| java.lang.Double    | JDouble               |
-| java.lang.Character | JCharacter            |
-| java.lang.String    | NSString              |
-| java.util.Date      | NSDate                |
-| java.util.List      | NSArray               |
-| java.util.Map       | NSDictionary          |
+| ----------------------- | --------------------- |
+| bool                    | bool (not *BOOL*, because *bool* is a builtin type which can be determined by reflection whereas *BOOL* is just a typedef to *char*) |
+| byte                    | char                  |
+| short                   | SInt16                |
+| int                     | SInt32                |
+| long                    | SInt64                |
+| float                   | float                 |
+| double                  | double                |
+| char                    | unichar               |
+| bool[]                  | JBooleanArray         |
+| byte[]                  | NSData                |
+| short[]                 | JShortArray           |
+| int[]                   | JIntegerArray         |
+| long[]                  | JLongArray            |
+| float[]                 | JFloatArray           |
+| double[]                | JDoubleArray          |
+| char[]                  | JCharacterArray       |
+| Object[]                | NSArray               |
+| java.lang.Boolean       | JBoolean              |
+| java.lang.Byte          | JByte                 |
+| java.lang.Short         | JShort                |
+| java.lang.Integer       | JInteger              |
+| java.lang.Long          | JLong                 |
+| java.lang.Float         | JFloat                |
+| java.lang.Double        | JDouble               |
+| java.lang.Character     | JCharacter            |
+| java.lang.String        | NSString              |
+| java.lang.StringBuilder | NSMutableString       |
+| java.util.Date          | NSDate                |
+| java.util.List          | NSArray               |
+| java.util.Map           | NSDictionary          |
+| java.util.Locale        | NSLocale              |
 
 Handling Packages
 --------------------------------
@@ -195,7 +197,7 @@ Objective-C class is the same as on Java side as long as you provide the java cl
 Handling Generics
 --------------------------------
 
-Given the following java bean with the property *infoMap* of type *Map* with key-type *Integer*
+Given the following Java bean with the property *infoMap* of type *Map* with key-type *Integer*
 and value-type *String*.
 
 *OtherBean.java*
@@ -454,20 +456,10 @@ The following Serializers are still not ported which is not a technical problem 
 - EnumSetSerializer
 - CurrencySerializer
 - StringBufferSerializer
-- StringBuilderSerializer
 - KryoSerializableSerializer
 - TimeZoneSerializer
 - CalendarSerializer
 - TreeMapSerializer
-
-I'm unsure if this Serializers can be ported:
-
-- CollectionsEmptyListSerializer
-- CollectionsEmptyMapSerializer
-- CollectionsEmptySetSerializer
-- CollectionsSingletonListSerializer
-- CollectionsSingletonMapSerializer
-- CollectionsSingletonSetSerializer
 
 *JavaSerializer* will probably never be ported because of the different serialization API in Cocoa
 but maybe someone has a good idea for that.
