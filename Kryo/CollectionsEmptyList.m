@@ -52,6 +52,11 @@
 
 - (void)getObjects:(id __unsafe_unretained [])objects range:(NSRange)range
 {
+	if (range.length == 0)
+	{
+		return;
+	}
+	
 	[NSException raise:NSRangeException format:@"Parameter range not in range"];
 }
 
