@@ -48,7 +48,16 @@
 
 @end
 
-#define ENUM_ELEMENT(ename, evalue, eproperties...) \
+#define ENUM_ELEMENT(ename, evalue) \
++ (id) ename { \
+static id retval = nil; \
+if (retval == nil) { \
+retval = [[self alloc] initWithName: @ #ename ordinal: evalue properties: [NSDictionary dictionary]]; \
+}\
+return retval;\
+}
+
+#define ENUM_ELEMENT_WITH_ARGS(ename, evalue, eproperties...) \
 + (id) ename { \
 static id retval = nil; \
 if (retval == nil) { \
