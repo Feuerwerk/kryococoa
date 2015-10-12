@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
-  spec.name         = 'kryococoa'
-  spec.version      = '1.0.1'
+  spec.name         = 'Kryo'
+  spec.version      = '1.0.2'
   spec.summary      = 'A Serialization Framework for Cocoa'
   spec.homepage     = 'https://github.com/Feuerwerk/kryococoa'
   spec.license     = { :type => 'MIT', :file => 'license_kryo.txt' }
