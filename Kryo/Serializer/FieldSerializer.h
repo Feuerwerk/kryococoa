@@ -27,7 +27,7 @@
 // ======================================================================================
 
 #import <Foundation/Foundation.h>
-#import "Serializer.h"
+#import "../Serializer.h"
 
 @interface FieldSerializer : NSObject<Serializer>
 {
