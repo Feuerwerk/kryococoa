@@ -234,11 +234,6 @@ static id getProperty(Enum *self, SEL name)
 	return [self->_properties objectForKey:getterKey(name)];
 }
 
-static SEL getSelProperty(Enum *self, SEL name)
-{
-	return NSSelectorFromString([self->_properties objectForKey:getterKey(name)]);
-}
-
 #define TYPEDGETTER(type,Type,typeValue) \
 static type get ## Type ## Property(Enum *self, SEL name) {\
 return [[self->_properties objectForKey:getterKey(name)] typeValue];\
