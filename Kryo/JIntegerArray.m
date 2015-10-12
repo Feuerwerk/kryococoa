@@ -26,7 +26,7 @@
 // ======================================================================================
 
 #import "JIntegerArray.h"
-#import "Serializer/JIntegerArraySerializer.h"
+#import "JIntegerArraySerializer.h"
 
 @interface JIntegerArray ()
 

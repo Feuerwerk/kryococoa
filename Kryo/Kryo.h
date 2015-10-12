@@ -46,7 +46,7 @@
 #import "KryoOutput.h"
 #import "KryoInput.h"
 #import "Serializer.h"
-#import "Serializer/CompatibleFieldSerializer.h"
+#import "CompatibleFieldSerializer.h"
 
 @class Registration;
 @class ObjectMap;

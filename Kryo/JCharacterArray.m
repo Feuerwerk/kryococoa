@@ -26,7 +26,7 @@
 // ======================================================================================
 
 #import "JCharacterArray.h"
-#import "Serializer/JCharacterArraySerializer.h"
+#import "JCharacterArraySerializer.h"
 
 @interface JCharacterArray ()
 

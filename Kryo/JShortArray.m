@@ -26,7 +26,7 @@
 // ======================================================================================
 
 #import "JShortArray.h"
-#import "Serializer/JShortArraySerializer.h"
+#import "JShortArraySerializer.h"
 
 @interface JShortArray ()
 

@@ -26,7 +26,7 @@
 // ======================================================================================
 
 #import "JFloatArray.h"
-#import "Serializer/JFloatArraySerializer.h"
+#import "JFloatArraySerializer.h"
 
 @interface JFloatArray ()
 

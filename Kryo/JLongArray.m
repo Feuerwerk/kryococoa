@@ -26,7 +26,7 @@
 // ======================================================================================
 
 #import "JLongArray.h"
-#import "Serializer/JLongArraySerializer.h"
+#import "JLongArraySerializer.h"
 
 @interface JLongArray ()
 

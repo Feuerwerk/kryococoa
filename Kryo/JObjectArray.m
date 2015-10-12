@@ -26,7 +26,7 @@
 // ======================================================================================
 
 #import "JObjectArray.h"
-#import "Serializer/JObjectArraySerializer.h"
+#import "JObjectArraySerializer.h"
 #import "Kryo.h"
 #import <objc/runtime.h>
 

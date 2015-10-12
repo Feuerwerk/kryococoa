@@ -26,7 +26,7 @@
 // ======================================================================================
 
 #import "JDoubleArray.h"
-#import "Serializer/JDoubleArraySerializer.h"
+#import "JDoubleArraySerializer.h"
 
 @interface JDoubleArray ()
 

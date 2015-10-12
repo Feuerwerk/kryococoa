@@ -26,7 +26,7 @@
 // ======================================================================================
 
 #import "JBooleanArray.h"
-#import "Serializer/JBooleanArraySerializer.h"
+#import "JBooleanArraySerializer.h"
 
 @interface JBooleanArray ()
 
