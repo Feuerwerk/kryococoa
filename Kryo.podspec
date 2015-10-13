@@ -1,9 +1,9 @@
 Pod::Spec.new do |spec|
   spec.name         = 'Kryo'
-  spec.version      = '1.0.5'
+  spec.version      = '1.0.0'
   spec.summary      = 'A Serialization Framework for Cocoa'
   spec.homepage     = 'https://github.com/Feuerwerk/kryococoa'
-  spec.license     = { :type => 'MIT', :file => 'license_kryo.txt' }
+  spec.license     = { :type => 'MIT', :file => 'LICENSE' }
   spec.author       = { 'Christian Fruth' => 'christian.fruth@boxx-it.de' }
   spec.source       = { :git => 'https://github.com/Feuerwerk/kryococoa.git', :tag => spec.version.to_s }
   spec.platform    = :ios
