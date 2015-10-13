@@ -28,19 +28,19 @@
 #import <Foundation/Foundation.h>
 #import "SerializationAnnotation.h"
 
-@interface JObjectArray : NSObject<SerializationAnnotation, NSFastEnumeration>
+@interface JObjectArray<__covariant ObjectType> : NSObject<SerializationAnnotation, NSFastEnumeration>
 {
 	NSMutableArray *_array;
 }
 
-+ (instancetype)arrayWithObject:(id)object;
-+ (instancetype)arrayWithObjects:(id)firstObject, ... NS_REQUIRES_NIL_TERMINATION;
++ (instancetype)arrayWithObject:(ObjectType)object;
++ (instancetype)arrayWithObjects:(ObjectType)firstObject, ... NS_REQUIRES_NIL_TERMINATION;
 + (instancetype)arrayWithCapacity:(NSUInteger)length;
 + (instancetype)arrayWithArray:(NSArray *)array;
 
 + (instancetype)arrayOfType:(Class)type;
-+ (instancetype)arrayOfType:(Class)type withObject:(id)object;
-+ (instancetype)arrayOfType:(Class)type withObjects:(id)firstObject, ... NS_REQUIRES_NIL_TERMINATION;
++ (instancetype)arrayOfType:(Class)type withObject:(ObjectType)object;
++ (instancetype)arrayOfType:(Class)type withObjects:(ObjectType)firstObject, ... NS_REQUIRES_NIL_TERMINATION;
 + (instancetype)arrayOfType:(Class)type withCapacity:(NSUInteger)length;
 + (instancetype)arrayOfType:(Class)type withArray:(NSArray *)array;
 
@@ -48,9 +48,9 @@
 - (id)initWithCapacity:(NSUInteger)length;
 
 - (NSUInteger)count;
-- (void)addObject:(id)object;
-- (id)objectAtIndex:(NSUInteger)index;
-- (id)objectAtIndexedSubscript:(NSUInteger)index;
+- (void)addObject:(ObjectType)object;
+- (ObjectType)objectAtIndex:(NSUInteger)index;
+- (ObjectType)objectAtIndexedSubscript:(NSUInteger)index;
 - (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id __unsafe_unretained [])buffer count:(NSUInteger)len;
 - (NSArray *)array;
 - (NSMutableArray *)mutableArray;
