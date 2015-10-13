@@ -6,7 +6,7 @@ Pod::Spec.new do |spec|
   spec.license     = { :type => 'MIT', :file => 'LICENSE' }
   spec.author       = { 'Christian Fruth' => 'christian.fruth@boxx-it.de' }
   spec.source       = { :git => 'https://github.com/Feuerwerk/kryococoa.git', :tag => spec.version.to_s }
-  spec.platform    = :ios
+  spec.platform    = :ios, '6.0'
   spec.ios.deployment_target = '6.0'
   spec.source_files = 'Kryo/**/*.{h,m}'
   spec.public_header_files = 'Kryo/Kryo.h', 'Kryo/*Annotation.h', 'Kryo/KryoInput.h', 'Kryo/KryoOutput.h', 'Kryo/KryoInputChunked.h', 'Kryo/KryoOutputChunked.h', 'Kryo/Serializer.h', 'Kryo/*Serializer.h', 'Kryo/J*.h'
