@@ -676,7 +676,7 @@
 		if (charCount == charSize)
 		{
 			charSize = charCount * 2;
-			chars = realloc(chars, charSize);
+			chars = realloc(chars, charSize * sizeof(unichar));
 		}
 
 		if ((b & 0x80) == 0x80)
@@ -715,7 +715,7 @@
 		if (charCount == charSize)
 		{
 			charSize = charCount * 2;
-			chars = realloc(chars, charSize);
+			chars = realloc(chars, charSize * sizeof(unichar));
 		}
 		
 		if ((b & 0x80) == 0x80)
