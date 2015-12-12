@@ -68,6 +68,7 @@
 	[kryo reference:object];
     ObjectMap *context = kryo.graphContext;
 	NSArray *fields = [context objectForKey:self];
+	const Field *nullField = (Field *)[NSNull null];
 
 	if (fields == nil)
 	{
@@ -85,6 +86,7 @@
 		for (NSUInteger i = 0; i < fieldCount; i++)
 		{
 			NSString *fieldName = [fieldNames objectAtIndex:i];
+			BOOL found = NO;
 
 			for (NSUInteger j = 0, thisCount = _fields.count; j < thisCount; j++)
 			{
@@ -93,8 +95,14 @@
 				if ([field.name isEqualToString:fieldName])
 				{
 					[newFields addObject:field];
+					found = YES;
 					break;
 				}
+			}
+			
+			if (!found)
+			{
+				[newFields addObject:nullField];
 			}
 		}
 
@@ -106,9 +114,9 @@
 	
 	for (NSUInteger i = 0, fieldCount = fields.count; i < fieldCount; i++)
 	{
-		Field *field = [fields objectAtIndex:i];
+		Field *field = fields[i];
 		
-		if (field == nil)
+		if (field == nullField)
 		{
 			[inputChunked nextChunks];
 			continue;
