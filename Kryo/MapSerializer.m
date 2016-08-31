@@ -113,6 +113,11 @@
 			[kryo writeClassAndObject:key to:output];
 		}
 		 
+		if (obj == [NSNull null])
+		{
+			obj = nil;
+		}
+		 
 		if (valueSerializer != nil)
 		{
 			if (_valuesCanBeNull)
@@ -205,7 +210,14 @@
 			value = [kryo readClassAndObject:input];
 		}
 
-		[map setObject:value forKey:key];
+		if (value != nil)
+		{
+			[map setObject:value forKey:key];
+		}
+		else
+		{
+			NSLog(@"Warning: Map-Element %@ is nil", key);
+		}
 	}
 
 	return map;
