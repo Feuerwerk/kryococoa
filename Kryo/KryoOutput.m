@@ -287,7 +287,7 @@
 
 	if (charCount == 0)
 	{
-		[self writeByte:1 | 0x80]; // 1 means empty string, bit 8 means UTF8.
+		[self writeByte:0x81]; // 1 means empty string, bit 8 means UTF8.
 		return;
 	}
 
