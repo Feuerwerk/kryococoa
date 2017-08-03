@@ -40,7 +40,7 @@
 	NSMutableDictionary *_classToNameId;
 	SInt32 _memoizedClassId;
 	Registration *_memoizedClassIdValue;
-	Kryo *_kryo;
+	__weak Kryo *_kryo;
 	SInt32 _nextNameId;
 }
 
