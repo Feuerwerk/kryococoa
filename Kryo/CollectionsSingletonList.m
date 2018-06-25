@@ -140,7 +140,7 @@
 			[NSException raise:NSRangeException format:@"Parameter indexes not in range"];
 		}
 		
-		[result addObject:_value];
+		[result addObject:self->_value];
 	}];
 	
 	return result;
@@ -176,7 +176,7 @@
 			[NSException raise:NSRangeException format:@"Parameter indexSet not in range"];
 		}
 		
-		block(_value, 0, stop);
+		block(self->_value, 0, stop);
 	}];
 }
 
@@ -202,7 +202,7 @@
 			[NSException raise:NSRangeException format:@"Parameter indexSet not in range"];
 		}
 		
-		if (predicate(_value, 0, stop))
+		if (predicate(self->_value, 0, stop))
 		{
 			result = 0;
 			*stop = YES;
@@ -246,7 +246,7 @@
 			[NSException raise:NSRangeException format:@"Parameter indexSet not in range"];
 		}
 		
-		if (predicate(_value, 0, stop))
+		if (predicate(self->_value, 0, stop))
 		{
 			[result addIndex:0];
 		}

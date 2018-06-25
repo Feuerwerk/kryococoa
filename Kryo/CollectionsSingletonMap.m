@@ -78,7 +78,7 @@
 	__block BOOL result = YES;
 	
 	[otherDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-		if (![key isEqual:_key] || ![obj isEqual:_value])
+		if (![key isEqual:self->_key] || ![obj isEqual:self->_value])
 		{
 			result = NO;
 			*stop = YES;

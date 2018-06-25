@@ -99,7 +99,7 @@
 	 {
 		if (keySerializer != nil)
 		{
-			if (_keysCanBeNull)
+			if (self->_keysCanBeNull)
 			{
 				[kryo writeNullableObject:key to:output usingSerializer:keySerializer];
 			}
@@ -120,7 +120,7 @@
 		 
 		if (valueSerializer != nil)
 		{
-			if (_valuesCanBeNull)
+			if (self->_valuesCanBeNull)
 			{
 				[kryo writeNullableObject:obj to:output usingSerializer:valueSerializer];
 			}
