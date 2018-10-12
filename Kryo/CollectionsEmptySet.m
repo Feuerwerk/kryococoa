@@ -88,20 +88,20 @@
 	return [NSSet setWithArray:other];
 }
 
-- (void)enumerateObjectsUsingBlock:(void (^)(id obj, BOOL *stop))block
+- (void)enumerateObjectsUsingBlock:(void (NS_NOESCAPE ^)(id obj, BOOL *stop))block
 {
 }
 
-- (void)enumerateObjectsWithOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, BOOL *stop))block
+- (void)enumerateObjectsWithOptions:(NSEnumerationOptions)opts usingBlock:(void (NS_NOESCAPE ^)(id obj, BOOL *stop))block
 {
 }
 
-- (NSSet *)objectsPassingTest:(BOOL (^)(id obj, BOOL *stop))predicate NS_AVAILABLE(10_6, 4_0)
+- (NSSet *)objectsPassingTest:(BOOL (NS_NOESCAPE ^)(id obj, BOOL *stop))predicate NS_AVAILABLE(10_6, 4_0)
 {
 	return self;
 }
 
-- (NSSet *)objectsWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (^)(id obj, BOOL *stop))predicate
+- (NSSet *)objectsWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (NS_NOESCAPE ^)(id obj, BOOL *stop))predicate
 {
 	return self;
 }

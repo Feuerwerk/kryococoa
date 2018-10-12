@@ -87,30 +87,30 @@
 	return nil;
 }
 
-- (void)enumerateKeysAndObjectsUsingBlock:(void (^)(id key, id obj, BOOL *stop))block
+- (void)enumerateKeysAndObjectsUsingBlock:(void (NS_NOESCAPE ^)(id key, id obj, BOOL *stop))block
 {
 }
 
-- (void)enumerateKeysAndObjectsWithOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id key, id obj, BOOL *stop))block
+- (void)enumerateKeysAndObjectsWithOptions:(NSEnumerationOptions)opts usingBlock:(void (NS_NOESCAPE ^)(id key, id obj, BOOL *stop))block
 {
 }
 
-- (NSArray *)keysSortedByValueUsingComparator:(NSComparator)cmptr
-{
-	return [CollectionsEmptyList array];
-}
-
-- (NSArray *)keysSortedByValueWithOptions:(NSSortOptions)opts usingComparator:(NSComparator)cmptr
+- (NSArray *)keysSortedByValueUsingComparator:(NS_NOESCAPE NSComparator)cmptr
 {
 	return [CollectionsEmptyList array];
 }
 
-- (NSSet *)keysOfEntriesPassingTest:(BOOL (^)(id key, id obj, BOOL *stop))predicate
+- (NSArray *)keysSortedByValueWithOptions:(NSSortOptions)opts usingComparator:(NS_NOESCAPE NSComparator)cmptr
+{
+	return [CollectionsEmptyList array];
+}
+
+- (NSSet *)keysOfEntriesPassingTest:(BOOL (NS_NOESCAPE ^)(id key, id obj, BOOL *stop))predicate
 {
 	return [CollectionsEmptySet set];
 }
 
-- (NSSet *)keysOfEntriesWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (^)(id key, id obj, BOOL *stop))predicate
+- (NSSet *)keysOfEntriesWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (NS_NOESCAPE ^)(id key, id obj, BOOL *stop))predicate
 {
 	return [CollectionsEmptySet set];
 }

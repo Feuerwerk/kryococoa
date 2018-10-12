@@ -118,19 +118,19 @@
 	return aSet;
 }
 
-- (void)enumerateObjectsUsingBlock:(void (^)(id obj, BOOL *stop))block
+- (void)enumerateObjectsUsingBlock:(void (NS_NOESCAPE ^)(id obj, BOOL *stop))block
 {
 	BOOL stop = NO;
 	block(_value, &stop);
 }
 
-- (void)enumerateObjectsWithOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id obj, BOOL *stop))block
+- (void)enumerateObjectsWithOptions:(NSEnumerationOptions)opts usingBlock:(void (NS_NOESCAPE ^)(id obj, BOOL *stop))block
 {
 	BOOL stop = NO;
 	block(_value, &stop);
 }
 
-- (NSSet *)objectsPassingTest:(BOOL (^)(id obj, BOOL *stop))predicate
+- (NSSet *)objectsPassingTest:(BOOL (NS_NOESCAPE ^)(id obj, BOOL *stop))predicate
 {
 	BOOL stop = NO;
 	
@@ -142,7 +142,7 @@
 	return [CollectionsEmptySet set];
 }
 
-- (NSSet *)objectsWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (^)(id obj, BOOL *stop))predicate
+- (NSSet *)objectsWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (NS_NOESCAPE ^)(id obj, BOOL *stop))predicate
 {
 	BOOL stop = NO;
 	

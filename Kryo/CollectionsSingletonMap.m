@@ -116,35 +116,35 @@
 	return [key isEqual:_key] ? _value : nil;
 }
 
-- (void)enumerateKeysAndObjectsUsingBlock:(void (^)(id key, id obj, BOOL *stop))block
+- (void)enumerateKeysAndObjectsUsingBlock:(void (NS_NOESCAPE ^)(id key, id obj, BOOL *stop))block
 {
 	BOOL stop = NO;
 	block(_key, _value, &stop);
 }
 
-- (void)enumerateKeysAndObjectsWithOptions:(NSEnumerationOptions)opts usingBlock:(void (^)(id key, id obj, BOOL *stop))block
+- (void)enumerateKeysAndObjectsWithOptions:(NSEnumerationOptions)opts usingBlock:(void (NS_NOESCAPE ^)(id key, id obj, BOOL *stop))block
 {
 	BOOL stop = NO;
 	block(_key, _value, &stop);
 }
 
-- (NSArray *)keysSortedByValueUsingComparator:(NSComparator)cmptr
+- (NSArray *)keysSortedByValueUsingComparator:(NS_NOESCAPE NSComparator)cmptr
 {
 	return [CollectionsEmptyList array];
 }
 
-- (NSArray *)keysSortedByValueWithOptions:(NSSortOptions)opts usingComparator:(NSComparator)cmptr
+- (NSArray *)keysSortedByValueWithOptions:(NSSortOptions)opts usingComparator:(NS_NOESCAPE NSComparator)cmptr
 {
 	return [CollectionsSingletonList arrayWithObject:_key];
 }
 
-- (NSSet *)keysOfEntriesPassingTest:(BOOL (^)(id key, id obj, BOOL *stop))predicate
+- (NSSet *)keysOfEntriesPassingTest:(BOOL (NS_NOESCAPE ^)(id key, id obj, BOOL *stop))predicate
 {
 	BOOL stop = NO;
 	return predicate(_key, _value, &stop) ? [CollectionsSingletonSet setWithObject:_key] : [CollectionsEmptySet set];
 }
 
-- (NSSet *)keysOfEntriesWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (^)(id key, id obj, BOOL *stop))predicate
+- (NSSet *)keysOfEntriesWithOptions:(NSEnumerationOptions)opts passingTest:(BOOL (NS_NOESCAPE ^)(id key, id obj, BOOL *stop))predicate
 {
 	BOOL stop = NO;
 	return predicate(_key, _value, &stop) ? [CollectionsSingletonSet setWithObject:_key] : [CollectionsEmptySet set];
